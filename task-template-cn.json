@@ -1,0 +1,54 @@
+{
+  "log": [
+    {
+      "text": [
+        "我想吃面",
+        "汉口路附近有5家面馆，你想要什么价格范围的？"
+      ],
+      "metadata": {
+        "inform": {
+          "food": "面馆"
+        },
+        "request": []
+      }
+    },
+    {
+      "text": [
+        "不要太贵吧，月底没钱了",
+        "好的，已经为您找到了餐厅兰州拉面。"
+      ],
+      "metadata": {
+        "inform": {
+          "food": "面馆",
+          "pricerange": "便宜"
+        },
+        "request": []
+      }
+    },
+    {
+      "text": [
+        "那好，请给我它的电话号码"
+      ],
+      "metadata": {
+        "inform": {
+          "food": "面馆",
+          "pricerange": "便宜"
+        },
+        "request": []
+      }
+    }
+  ],
+  "goal": {
+    "restaurant": {
+      "request": [
+        "推荐菜",
+        "电话"
+      ],
+      "inform": {
+        "pricerange": "*",
+        "food": "小吃快餐"
+      }
+    },
+    "message": "你正在寻找一家提供 |小吃快餐| 的餐厅，你不在乎餐厅的价格，确保你得到餐厅的 |推荐菜、电话| "
+  }
+}

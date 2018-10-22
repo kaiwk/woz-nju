@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <title>Data Collect - User</title>
+
+    <style>
+     .green-box {
+       border: 1px solid green;
+       padding: 10px;
+     }
+
+     .blue-box {
+       border: 1px solid blue;
+       padding: 10px;
+     }
+
+     table {
+       border-collapse: collapse;
+     }
+
+     table, th, td {
+       border: 1px solid black;
+     }
+
+     td {
+       text-align: center;
+     }
+
+    </style>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+    <script>
+     $(document).ready(function(){
+         var socket = io('/wizard');
+
+         $("#annotation").submit(function(e) {
+             var form = $(this);
+             var url = form.attr('action');
+
+             function table_row(rest) {
+                 return '<tr>' +
+                        '<td>' + rest.name + '</td>' +
+                        '<td>' + rest.tag + '</td>' +
+                        '<td>' + rest.mean_price + '</td>' +
+                        '<td>' + rest.phone + '</td>' +
+                        '<td>' + rest.address + '</td>' +
+                        '<td>' + rest.service + '</td>' +
+                        '<td>' + rest.environment + '</td>' +
+                        '<td>' + rest.taste + '</td>' +
+                        '<td>' + rest.recommends + '</td>' +
+                        '</tr>';
+             }
+
+             $.ajax({
+                 type: "POST",
+                 url: url,
+                 data: form.serialize(), // serializes the form's elements.
+                 success: function(data) {
+                     cons = data['inform'];/* cons means constraint */
+                     $.getJSON('../static/kb/restaurant.json', function (restArr) {
+                         res = restArr.filter(function (rest) {
+                             if (cons['food_type']) {
+                                 return rest.tag === cons.food_type
+                             }
+                         }).filter(function (rest) {
+                             if (cons['pricerange']) {
+                                 var pricerange = cons['pricerange'];
+                                 var mean_price = Number(rest['mean_price'].slice(1));
+                                 if (pricerange === '昂贵') {
+                                     return mean_price >= 25;
+                                 } else if (pricerange === '一般') {
+                                     return mean_price >= 15 && mean_price < 25;
+                                 } else if (pricerange === '便宜') {
+                                     return mean_price < 15;
+                                 } else if (pricerange === '*') {
+                                     return true;
+                                 }
+                             } else return true;
+                         });
+                         console.log(res)
+                         res.map(function (rest) {
+                             $('#search-result').append(table_row(rest));
+                         });
+                     });
+                 }
+             });
+             e.preventDefault(); // avoid to execute the actual submit of the form.
+         });
+     });
+    </script>
+
+  </head>
+
+  <body>
+    <div class="blue-box">
+
+      {% for t in log %}
+        {% if t['text'][0] %}
+          <p>助手:{{ t['text'][0] }}</p>
+        {% endif %}
+        {% if t['text'][1] %}
+          <p>消费者:{{ t['text'][1] }}</p>
+        {% endif %}
+      {% endfor %}
+
+      <div class="green-box">
+        <p>请根据上面用户的回答修改以下信息</p>
+        <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
+          <ul>
+            <li>
+              <span>用户想要哪种食物类型?</span> <input name="want_food_type" type="text" value=""/> <br/>
+              <span>用户想要的餐厅在哪种价格范围?</span> <input name="want_pricerange" type="text" value=""/> <br/>
+            </li>
+            <li>
+              <span>用户想知道餐厅的食物类型吗？</span>
+              <select name="request_food_type">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+              </select>
+              <br/>
+
+              <span>用户想知道餐厅的价格范围吗？</span>
+              <select name="request_pricerange">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+              </select>
+              <br/>
+
+              <span>用户想知道餐厅的电话号码吗？</span>
+              <select name="request_phone">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+              </select>
+              <br/>
+
+              <span>用户想知道餐厅的地址吗吗？</span>
+              <select name="request_addr">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+              </select>
+              <br/>
+
+              <span>用户想知道餐厅的推荐菜吗？</span>
+              <select name="request_recom">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+              </select>
+              <br/>
+            </li>
+          </ul>
+          <input type="submit" value="finish">
+        </form>
+      </div>
+
+      <form action="{{ url_for('wizard.index') }}" method="post">
+        <input type="text" name="sys_resp" size="200">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="green-box">
+
+      <table id="search-result" style="width:100%">
+        <tr>
+          <th>餐厅名</th>
+          <th>食物类型</th>
+          <th>价格范围</th>
+          <th>电话</th>
+          <th>地址</th>
+          <th>服务评分</th>
+          <th>环境评分</th>
+          <th>口味评分</th>
+          <th>推荐菜</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

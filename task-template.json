@@ -1,0 +1,22 @@
+{
+  "goal": {
+    "message": [
+      "You are looking for a <span class='emphasis'>place to dine</span>. The restaurant should be in the <span class='emphasis'>expensive</span> price range and should serve <span class='emphasis'>chinese</span> food",
+      "Make sure you get <span class='emphasis'>address</span>, <span class='emphasis'>phone number</span>, and <span class='emphasis'>postcode</span>"
+    ],
+    "messageLen": 1,
+    "restaurant": {
+      "fail_info": {},
+      "info": {
+        "food": "chinese",
+        "pricerange": "expensive"
+      },
+      "reqt": [
+        "address",
+        "phone",
+        "postcode"
+      ]
+    }
+  },
+  "log": []
+}
