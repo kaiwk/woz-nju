@@ -40,7 +40,7 @@
       {% endfor %}
     </div>
     <br/>
-    {% if log[-1]['text']|length == 1 %}
+    {% if log|length == 0 or 'metadata' in log[-1] %}
       <form action="{{ url_for('user.index') }}" method="post">
         <input type="text" name="resp" size="200">
         <input type="submit" value="Submit">

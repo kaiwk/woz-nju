@@ -95,10 +95,10 @@
 
       {% for t in log %}
         {% if t['text'][0] %}
-          <p>助手:{{ t['text'][0] }}</p>
+          <p><span style="display:inline-block;width:55px;">消费者</span>| {{ t['text'][0] }}</p>
         {% endif %}
         {% if t['text'][1] %}
-          <p>消费者:{{ t['text'][1] }}</p>
+          <p><span style="display:inline-block;width:55px;">助手</span>| {{ t['text'][1] }}</p>
         {% endif %}
       {% endfor %}
 

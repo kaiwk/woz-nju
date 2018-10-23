@@ -34,7 +34,8 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # apply the blueprints to the app
-    from nju_dc import user, wizard
+    from nju_dc import main, user, wizard
+    app.register_blueprint(main.app, url_prefix='/dc')
     app.register_blueprint(user.app, url_prefix='/dc')
     app.register_blueprint(wizard.app, url_prefix='/dc')
 

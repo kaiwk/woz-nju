@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template, request, session, jsonify
+from flask import Blueprint, render_template, request, session, jsonify, redirect, url_for
 
 from .db import get_db, close_db
 from . import socketio
@@ -11,11 +11,12 @@ app = Blueprint('wizard', __name__,
 
 @app.route('wizard/', methods=['GET', 'POST'])
 def index():
-    session['task_id'] = 57
-    task_id = session['task_id']
-    with get_db('EXCLUSIVE') as db:
+    if session['task_id']:
+        task_id = session['task_id']
+    else:
+        return redirect(url_for('main.index'))
+    with get_db() as db:
         res = db.execute('select body from task where rowid=?', (task_id,))
-        db.execute('update task set selected=1 where rowid=?', (task_id,))
         task = json.loads(res.fetchone()[0])
     if request.method == 'GET':
         log = task['log']
@@ -23,7 +24,7 @@ def index():
     elif request.method == 'POST':
         task['log'][-1]['text'].append(request.form['sys_resp'])
         with get_db('EXCLUSIVE') as db:
-            res = db.execute('update task set body=? where rowid=?', (task, task_id))
+            res = db.execute('update task set body=? where rowid=?', (json.dumps(task, ensure_ascii=False), task_id))
         return render_template('wizard.html', log=task['log'])
 
 @app.route('update_metadata/', methods=['POST'])
@@ -59,12 +60,13 @@ def update_metadata():
             metadata['request'].append('address')
 
         task['log'][-1]['metadata'] = metadata
+        with get_db() as db:
+            db.execute('update task set body=? where rowid=?', (json.dumps(task, ensure_ascii=False), task_id))
         return jsonify(metadata)
-
-        # db.execute('update task set body=? where rowid=?', (task, task_id))
 
 @socketio.on('disconnect', namespace='/wizard')
 def disconnect_handler():
     with get_db('EXCLUSIVE') as db:
         db.execute('update task set selected=0 where rowid=?', (session['task_id'],))
+    session['task_id'] = None
     close_db()
