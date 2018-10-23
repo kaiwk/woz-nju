@@ -1,8 +1,8 @@
 import json
 
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, session, redirect, url_for, current_app
 
-from .db import get_db, close_db
+from .db import get_db
 
 app = Blueprint('main', __name__,
                 static_folder='static',
@@ -19,6 +19,8 @@ def index():
 
     session['task_id'] = task_id # save the task_id
     log = task['log']
-    if (len(log) == 0) or ('metadata' in log[-1]):
+    if not log or ('metadata' in log[-1]):
+        current_app.logger.info('Redirect to user index.')
         return redirect(url_for('user.index'))
+    current_app.logger.info('Redirect to wizard index.')
     return redirect(url_for('wizard.index'))
