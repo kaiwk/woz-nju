@@ -18,6 +18,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
     <script>
      $(document).ready(function(){
+         // socket connection for timeout detection
          var socket = io('/user');
      });
     </script>
@@ -25,7 +26,7 @@
 
   <body>
     <div class="green-box">
-      {{ desc }}
+      {{ desc|safe }}
     </div>
     <br/>
     <div class="blue-box">
@@ -41,10 +42,12 @@
     </div>
     <br/>
     {% if log|length == 0 or 'metadata' in log[-1] %}
-      <form action="{{ url_for('user.index') }}" method="post">
+      <form id="user-submit" action="{{ url_for('user.index') }}" method="post">
         <input type="text" name="resp" size="200">
         <input type="submit" value="Submit">
       </form>
+    {% else %}
+      <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
     {% endif %}
   </body>
 </html>

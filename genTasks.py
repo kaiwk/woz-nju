@@ -12,15 +12,15 @@ REQUESTS = ['地址', '电话', '推荐菜']
 def want_food(ftype):
     if ftype == '*':
         return '你正在寻找一家餐厅'
-    return '你正在寻找一家提供 |{}| 的餐厅'.format(ftype)
+    return '你正在寻找一家提供<b>{}</b>的餐厅'.format(ftype)
 
 def want_pricerange(pricerange):
     if pricerange == '*':
         return '你不在乎餐厅的价格'
-    return '餐厅的价格为 |{}| '.format(pricerange)
+    return '餐厅的价格为<b>{}</b>'.format(pricerange)
 
 def ensure_requests(req):
-    return '确保你得到餐厅的 |{}| '.format('、'.join(req))
+    return '确保你得到餐厅的<b>{}</b>'.format('、'.join(req))
 
 def clear_tasks():
     task_dir = 'instance/tasks/'

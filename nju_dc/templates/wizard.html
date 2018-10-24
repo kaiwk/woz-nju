@@ -34,7 +34,6 @@
 
          $("#annotation").submit(function(e) {
              var form = $(this);
-             var url = form.attr('action');
 
              function table_row(rest) {
                  return '<tr>' +
@@ -52,7 +51,7 @@
 
              $.ajax({
                  type: "POST",
-                 url: url,
+                 url: form.attr('action'),
                  data: form.serialize(), // serializes the form's elements.
                  success: function(data) {
                      cons = data['inform'];/* cons means constraint */
@@ -102,59 +101,63 @@
         {% endif %}
       {% endfor %}
 
-      <div class="green-box">
-        <p>请根据上面用户的回答修改以下信息</p>
-        <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
-          <ul>
-            <li>
-              <span>用户想要哪种食物类型?</span> <input name="want_food_type" type="text" value=""/> <br/>
-              <span>用户想要的餐厅在哪种价格范围?</span> <input name="want_pricerange" type="text" value=""/> <br/>
-            </li>
-            <li>
-              <span>用户想知道餐厅的食物类型吗？</span>
-              <select name="request_food_type">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
-              </select>
-              <br/>
+      {% if log|length == 0 or 'metadata' in log[-1] %}
+        <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
+      {% else %}
+        <div class="green-box">
+          <p>请根据上面用户的回答修改以下信息</p>
+          <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
+            <ul>
+              <li>
+                <span>用户想要哪种食物类型?</span> <input name="want_food_type" type="text" value=""/> <br/>
+                <span>用户想要的餐厅在哪种价格范围?</span> <input name="want_pricerange" type="text" value=""/> <br/>
+              </li>
+              <li>
+                <span>用户想知道餐厅的食物类型吗？</span>
+                <select name="request_food_type">
+                  <option value="yes">No</option>
+                  <option value="no">Yes</option>
+                </select>
+                <br/>
 
-              <span>用户想知道餐厅的价格范围吗？</span>
-              <select name="request_pricerange">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
-              </select>
-              <br/>
+                <span>用户想知道餐厅的价格范围吗？</span>
+                <select name="request_pricerange">
+                  <option value="yes">No</option>
+                  <option value="no">Yes</option>
+                </select>
+                <br/>
 
-              <span>用户想知道餐厅的电话号码吗？</span>
-              <select name="request_phone">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
-              </select>
-              <br/>
+                <span>用户想知道餐厅的电话号码吗？</span>
+                <select name="request_phone">
+                  <option value="yes">No</option>
+                  <option value="no">Yes</option>
+                </select>
+                <br/>
 
-              <span>用户想知道餐厅的地址吗吗？</span>
-              <select name="request_addr">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
-              </select>
-              <br/>
+                <span>用户想知道餐厅的地址吗吗？</span>
+                <select name="request_addr">
+                  <option value="yes">No</option>
+                  <option value="no">Yes</option>
+                </select>
+                <br/>
 
-              <span>用户想知道餐厅的推荐菜吗？</span>
-              <select name="request_recom">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
-              </select>
-              <br/>
-            </li>
-          </ul>
-          <input type="submit" value="finish">
+                <span>用户想知道餐厅的推荐菜吗？</span>
+                <select name="request_recom">
+                  <option value="yes">No</option>
+                  <option value="no">Yes</option>
+                </select>
+                <br/>
+              </li>
+            </ul>
+            <input type="submit" value="finish">
+          </form>
+        </div>
+
+        <form action="{{ url_for('wizard.index') }}" method="post">
+          <input type="text" name="sys_resp" size="200">
+          <input type="submit" value="Submit">
         </form>
-      </div>
-
-      <form action="{{ url_for('wizard.index') }}" method="post">
-        <input type="text" name="sys_resp" size="200">
-        <input type="submit" value="Submit">
-      </form>
+      {% endif %}
     </div>
 
     <div class="green-box">
