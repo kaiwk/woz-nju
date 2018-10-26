@@ -1,7 +1,7 @@
 import json
 
 from flask import (Blueprint, render_template, request, session, jsonify,
-                   redirect, url_for, current_app)
+                   redirect, url_for, current_app, flash)
 
 from .db import get_db, close_db
 from . import socketio
@@ -26,16 +26,27 @@ def index():
         log = task['log']
         return render_template('wizard.html', log=log)
     elif request.method == 'POST':
-        task['log'][-1]['text'].append(request.form['sys_resp'])
-        with get_db('EXCLUSIVE') as db:
-            res = db.execute('update task set body=?, selected=0 where rowid=?',
-                             (json.dumps(task, ensure_ascii=False), task_id))
+        resp = request.form['sys_resp']
+        if resp.strip():
+            # save the wizard response and metadata
+            task['log'][-1]['text'].append(request.form['sys_resp'])
+            task['log'][-1]['metadata'] = session['metadata']
+            with get_db('EXCLUSIVE') as db:
+                res = db.execute('update task set body=?, selected=0 where rowid=?',
+                                 (json.dumps(task, ensure_ascii=False), task_id))
 
-        session.clear()         # clear the task_id
-        return render_template('wizard.html', log=task['log'])
+            session.clear()         # clear the task_id
+            return render_template('wizard.html', log=task['log'])
+        else:
+            flash('回复内容不能为空哦')
+            return redirect(url_for('wizard.index'))
 
 @app.route('update_metadata/', methods=['POST'])
 def update_metadata():
+    """
+    This method will not save the metadata, and metadata will be saved until
+    worker submit the whole form.
+    """
     food_type = request.form['want_food_type']
     pricerange = request.form['want_pricerange']
     request_food_type = True if request.form['request_food_type'] == 'yes' else False
@@ -66,10 +77,7 @@ def update_metadata():
         if request_addr:
             metadata['request'].append('address')
 
-        task['log'][-1]['metadata'] = metadata
-        with get_db() as db:
-            db.execute('update task set body=? where rowid=?',
-                       (json.dumps(task, ensure_ascii=False), task_id))
+        session['metadata'] = metadata
         return jsonify(metadata)
 
 @socketio.on('disconnect', namespace='/wizard')

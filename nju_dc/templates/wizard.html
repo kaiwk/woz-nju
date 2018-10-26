@@ -158,6 +158,18 @@
           <input type="submit" value="Submit">
         </form>
       {% endif %}
+
+      <!-- get flashes -->
+      {% with msgs = get_flashed_messages() %}
+        {% if msgs %}
+          <ul class="flashes">
+            {% for msg in msgs %}
+              <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
     </div>
 
     <div class="green-box">

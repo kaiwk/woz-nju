@@ -12,6 +12,8 @@ app = Blueprint('main', __name__,
 def index():
     with get_db('EXCLUSIVE') as db:
         c = db.execute('select rowid, body from task where selected=0 limit 1;')
+        # random select row
+        # c = db.execute('select rowid, body from task where selected=0 order by random() limit 1;')
         row = c.fetchone()
         task_id = row['rowid']
         task = json.loads(row['body'])
