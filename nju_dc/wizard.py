@@ -14,10 +14,10 @@ app = Blueprint('wizard', __name__,
 def index():
     if session.get('task_id'):
         task_id = session['task_id']
-        current_app.logger.info('task id: {}'.format(task_id))
     else:
         return redirect(url_for('main.index'))
 
+    current_app.logger.info('task id: {}'.format(task_id))
     with get_db() as db:
         res = db.execute('select body from task where rowid=?', (task_id,))
         task = json.loads(res.fetchone()[0])
@@ -82,7 +82,7 @@ def update_metadata():
 
 @socketio.on('disconnect', namespace='/wizard')
 def disconnect_handler():
-    current_app.logger.info('disconnect!!!')
+    current_app.logger.info('disconnect!')
     if session.get('task_id'):
         with get_db('EXCLUSIVE') as db:
             db.execute('update task set selected=0 where rowid=?', (session['task_id'],))

@@ -1,4 +1,6 @@
 import os
+import logging
+from logging.config import dictConfig
 
 from flask import Flask
 
@@ -12,11 +14,35 @@ def create_app(test_config=None):
 
     Some config variable we need to specify in 'instance/config.py'
 
+    DEBUG
     SECRET_KEY
     GITHUB_SECRET
     REPO_PATH
-
     """
+    dictConfig({
+        'version': 1,
+        'formatters': {
+            'default': {
+                'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+            }
+        },
+        'handlers': {
+            'dc_handler': {
+                'class': 'logging.handlers.RotatingFileHandler',
+                'level': 'INFO',
+                'filename': '/var/log/flask/flask.log',
+                'mode': 'a',
+                'maxBytes': 2048,
+                'backupCount': 10
+            },
+        },
+        'loggers': {
+            'flask.app': {
+                'handlers': ['dc_handler']
+            }
+        },
+    })
+
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         # a default secret that should be overridden by instance config

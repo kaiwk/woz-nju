@@ -17,6 +17,7 @@ def index():
     else:
         return redirect(url_for('main.index'))
 
+    current_app.logger.info('task id: {}'.format(task_id))
     with get_db() as db:
         res = db.execute('select body from task where rowid=?', (task_id,))
         task = json.loads(res.fetchone()[0])
@@ -42,7 +43,7 @@ def index():
 
 @socketio.on('disconnect', namespace='/user')
 def disconnect_handler():
-    current_app.logger.info('user disconnect!!!')
+    current_app.logger.info('disconnect!')
     if session.get('task_id'):
         with get_db('EXCLUSIVE') as db:
             db.execute('update task set selected=0 where rowid=?', (session['task_id'],))
