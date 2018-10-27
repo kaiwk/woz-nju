@@ -18,7 +18,7 @@ def create_app(test_config=None):
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
+        app.config.from_pyfile(os.path.join(app.instance_path, 'config.py'), silent=True)
     else:
         # load the test config if passed in
         app.config.update(test_config)
@@ -34,10 +34,11 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # apply the blueprints to the app
-    from nju_dc import main, user, wizard
+    from nju_dc import main, user, wizard, webhook
     app.register_blueprint(main.app, url_prefix='/dc')
     app.register_blueprint(user.app, url_prefix='/dc')
     app.register_blueprint(wizard.app, url_prefix='/dc')
+    app.register_blueprint(webhook.webhook, url_prefix='/dc')
 
     socketio.init_app(app)
 
