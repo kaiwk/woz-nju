@@ -14,7 +14,7 @@ def handle_github_hook():
     signature = request.headers.get('X-Hub-Signature')
     _, signature = signature.split('=')
 
-    secret = current_app.config.get('GITHUB_SECRET')
+    secret = current_app.config.get('GITHUB_SECRET').encode()
 
     hashhex = hmac.new(secret, request.data, digestmod='sha1').hexdigest()
 
