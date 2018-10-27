@@ -7,7 +7,16 @@ from flask_socketio import SocketIO
 socketio = SocketIO()
 
 def create_app(test_config=None):
-    """Create and configure an instance of the Flask application."""
+    """
+    Create and configure an instance of the Flask application.
+
+    Some config variable we need to specify in 'instance/config.py'
+
+    SECRET_KEY
+    GITHUB_SECRET
+    REPO_PATH
+
+    """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
