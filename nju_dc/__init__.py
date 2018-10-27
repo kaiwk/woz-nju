@@ -47,7 +47,7 @@ def create_app(test_config=None):
     app.register_blueprint(main.app, url_prefix='/dc')
     app.register_blueprint(user.app, url_prefix='/dc')
     app.register_blueprint(wizard.app, url_prefix='/dc')
-    app.register_blueprint(webhook.webhook, url_prefix='/dc')
+    app.register_blueprint(webhook.app, url_prefix='/dc')
 
     socketio.init_app(app)
 

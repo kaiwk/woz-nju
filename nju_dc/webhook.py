@@ -5,9 +5,9 @@ from flask import (Blueprint, request, session, redirect, current_app, jsonify)
 
 from git import Repo
 
-webhook = Blueprint('webhook', __name__)
+app = Blueprint('webhook', __name__)
 
-@webhook.route('/github', methods=['POST'])
+@app.route('/github', methods=['POST'])
 def handle_github_hook():
     """Entry point for github webhook."""
 
