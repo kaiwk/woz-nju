@@ -1,7 +1,6 @@
-import json
 import hmac
 
-from flask import (Blueprint, request, session, redirect, current_app, jsonify)
+from flask import Blueprint, request, current_app, jsonify
 
 from git import Repo
 
