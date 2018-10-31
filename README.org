@@ -1,0 +1,15 @@
+* Prerequisites and Dependencies
+
+1. database: =sudo apt install sqlite3=
+2. web server: =sudo apt install nginx=
+3. WSGI server: gunicorn, it will be installed with Python3 packages
+4. Python packages: create a python virtul environment, activate it, then =pip install -r requirements.txt=
+
+After installing all the dependencies, enter the project root, test with =gunicorn --worker-class eventlet -w 1 "nju_dc:create_app()" -b 0.0.0.0:5000 --reload=
+
+* Deployment
+
+1. nju_dc.conf is nginx conf file, link it to =/etc/nginx/sites-enabled/default=, =sudo ln -s /etc/nginx/sites-enabled/default /project/root/nju_dc.conf=
+2. reload the conf file: =sudo nginx -s reload=, check everything is correct
+3. restart nginx: =sudo systemctl restart nginx=
+4. after that, start WSGI server, in our case, it's gunicorn, =gunicorn --worker-class eventlet -w 1 "nju_dc:create_app()" -b 0.0.0.0:5000 --reload=
