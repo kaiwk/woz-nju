@@ -14,6 +14,10 @@ app = Blueprint('user', __name__,
 def index():
     if session.get('task_id'):
         task_id = session['task_id']
+        with get_db('EXCLUSIVE') as db:
+            selected = db.execute('select selected from task where rowid=?', (task_id,))
+            if not selected.fetchone()[0]:
+                db.execute('update task set selected=1 where rowid=?', (task_id,))
     else:
         return redirect(url_for('main.index'))
 
@@ -43,8 +47,9 @@ def index():
 
 @socketio.on('disconnect', namespace='/user')
 def disconnect_handler():
-    current_app.logger.info('disconnect!')
-    if session.get('task_id'):
+    task_id = session.get('task_id')
+    if task_id:
         with get_db('EXCLUSIVE') as db:
-            db.execute('update task set selected=0 where rowid=?', (session['task_id'],))
+            db.execute('update task set selected=0 where rowid=?', (task_id,))
+            current_app.logger.info('unselected {}'.format(task_id))
     close_db()
