@@ -76,6 +76,7 @@
                              } else return true;
                          });
                          console.log(res)
+                         $('#search-result').empty();
                          res.map(function (rest) {
                              $('#search-result').append(table_row(rest));
                          });
@@ -174,18 +175,22 @@
 
     <div class="green-box">
 
-      <table id="search-result" style="width:100%">
-        <tr>
-          <th>餐厅名</th>
-          <th>食物类型</th>
-          <th>价格范围</th>
-          <th>电话</th>
-          <th>地址</th>
-          <th>服务评分</th>
-          <th>环境评分</th>
-          <th>口味评分</th>
-          <th>推荐菜</th>
-        </tr>
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th>餐厅名</th>
+            <th>食物类型</th>
+            <th>价格范围</th>
+            <th>电话</th>
+            <th>地址</th>
+            <th>服务评分</th>
+            <th>环境评分</th>
+            <th>口味评分</th>
+            <th>推荐菜</th>
+          </tr>
+        </thead>
+        <tbody id="search-result">
+        </tbody>
       </table>
     </div>
   </body>
