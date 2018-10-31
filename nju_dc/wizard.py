@@ -25,21 +25,21 @@ def index():
     if request.method == 'GET':
         log = task['log']
         return render_template('wizard.html', log=log)
+    elif request.method == 'POST':
+        resp = request.form['sys_resp']
+        if resp.strip():
+            # save the wizard response and metadata
+            task['log'][-1]['text'].append(request.form['sys_resp'])
+            task['log'][-1]['metadata'] = session['metadata']
+            with get_db('EXCLUSIVE') as db:
+                res = db.execute('update task set body=?, selected=0 where rowid=?',
+                                 (json.dumps(task, ensure_ascii=False), task_id))
 
-    # POST
-    resp = request.form['sys_resp']
-    if resp.strip():
-        # save the wizard response and metadata
-        task['log'][-1]['text'].append(request.form['sys_resp'])
-        task['log'][-1]['metadata'] = session['metadata']
-        with get_db('EXCLUSIVE') as db:
-            res = db.execute('update task set body=?, selected=0 where rowid=?',
-                             (json.dumps(task, ensure_ascii=False), task_id))
-
-        session.clear()         # clear the task_id
-        return render_template('wizard.html', log=task['log'])
-    flash('回复内容不能为空哦')
-    return redirect(url_for('wizard.index'))
+            session.clear()         # clear the task_id
+            return render_template('wizard.html', log=task['log'])
+        else:
+            flash('回复内容不能为空哦')
+            return redirect(url_for('wizard.index'))
 
 @app.route('update_metadata/', methods=['POST'])
 def update_metadata():
