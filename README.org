@@ -8,7 +8,7 @@
 6. generate tasks, execute script =./genTask.py=, the tasks should be generated in =instance/tasks=
 7. set up flask environment, execute =source flask_env.sh=
 8. initialize database, =flask init-db=
-9. run in debug mode, =flask run=
+9. run in debug mode, =flask run=, ensure everything works
 
 After installing all the dependencies, enter the project root, ensure gunicorn work correctly:
 
