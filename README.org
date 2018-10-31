@@ -3,7 +3,7 @@
 1. database: =sudo apt install sqlite3=
 2. web server: =sudo apt install nginx=
 3. WSGI server: gunicorn, it should be installed with Python3 packages
-4. Python packages: create a python virtul environment, activate it, then =pip install -r requirements.txt=
+4. Python3 packages: create a Python3 virtul environment, activate it, then =pip install -r requirements.txt=
 5. enter project root directory, =mkdir -p instance/tasks=, there should be a =instance/config.py=, this file is secret, and not included in github repo.
 6. generate tasks, execute script =./genTask.py=, the tasks should be generated in =instance/tasks=
 7. set up flask environment, execute =source flask_env.sh=
