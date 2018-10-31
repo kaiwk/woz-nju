@@ -29,7 +29,6 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
     <script>
-     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 
      $(document).ready(function(){
          var socket = io('/wizard');
@@ -57,7 +56,7 @@
                  data: form.serialize(), // serializes the form's elements.
                  success: function(data) {
                      cons = data['inform'];/* cons means constraint */
-                     $.getJSON($SCRIPT_ROOT+'/static/kb/restaurant.json', function (restArr) {
+                     $.getJSON('/static/kb/restaurant.json', function (restArr) {
                          res = restArr.filter(function (rest) {
                              if (cons['food_type']) {
                                  return rest.tag === cons.food_type
