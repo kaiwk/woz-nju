@@ -26,20 +26,20 @@ def index():
 
     if request.method == 'GET':
         return render_template('user.html', desc=desc, log=log)
-    elif request.method == 'POST':
-        resp = request.form['resp']
-        if resp.strip():
-            task['log'].append({'text': [resp]})
-            log = task['log']
-            with get_db('EXCLUSIVE') as db:
-                db.execute('update task set body=?, selected=0 where rowid=?',
-                           (json.dumps(task, ensure_ascii=False), task_id))
 
-            session.clear()         # clear session
-            return render_template('user.html', desc=desc, log=log)
-        else:
-            flash('回复内容不能为空哦')
-            return redirect(url_for('user.index'))
+    # POST
+    resp = request.form['resp']
+    if resp.strip():
+        task['log'].append({'text': [resp]})
+        log = task['log']
+        with get_db('EXCLUSIVE') as db:
+            db.execute('update task set body=?, selected=0 where rowid=?',
+                       (json.dumps(task, ensure_ascii=False), task_id))
+
+        session.clear()         # clear session
+        return render_template('user.html', desc=desc, log=log)
+    flash('回复内容不能为空哦')
+    return redirect(url_for('user.index'))
 
 @socketio.on('disconnect', namespace='/user')
 def disconnect_handler():
