@@ -4,9 +4,10 @@ from flask import Blueprint, request, current_app, jsonify
 
 from git import Repo
 
-app = Blueprint('webhook', __name__)
+bp = Blueprint('webhook', __name__)
 
-@app.route('/github', methods=['POST'])
+
+@bp.route('/github', methods=['POST'])
 def handle_github_hook():
     """Entry point for github webhook."""
 

@@ -14,14 +14,6 @@
      }
 
     </style>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
-    <script>
-     $(document).ready(function(){
-         // socket connection for timeout detection
-         var socket = io('/user');
-     });
-    </script>
   </head>
 
   <body>

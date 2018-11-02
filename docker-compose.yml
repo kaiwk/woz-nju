@@ -1,0 +1,40 @@
+version: '3'
+services:
+    web:
+        build: .
+        image: njudc-web
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - ./app:/home/nju_dc/app
+            - ./migrations:/home/nju_dc/migrations
+        depends_on:
+            - mysql
+        container_name: njudc-web
+    nginx:
+        image: nginx:1.13
+        restart: always
+        volumes:
+            - ./docker/conf/nginx/nju_dc.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - web
+        ports:
+            - 80:80
+        environment:
+            - NGINX_PORT=80
+        container_name: njudc-nginx
+    mysql:
+        image: mysql:5.7
+        restart: always
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=1234qwer # change the mysql root password
+            - MYSQL_DATABASE=nju_dc
+            - MYSQL_USER=nju_dc
+            - MYSQL_PASSWORD=nju_dc_pass # change mysql user password
+        command: ['mysqld', '--max-connections=200',
+                            '--character-set-server=utf8mb4',
+                            '--collation-server=utf8mb4_unicode_ci']
+        container_name: njudc-mysql

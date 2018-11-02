@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-export FLASK_APP=nju_dc
-export FLASK_ENV=development
+export FLASK_APP=app
+export FLASK_ENV=development # product
