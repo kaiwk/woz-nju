@@ -17,6 +17,7 @@ services:
         restart: always
         volumes:
             - ./docker/conf/nginx/nju_dc.conf:/etc/nginx/conf.d/default.conf
+            - ./app/static:/home/nju_dc/app/static
         depends_on:
             - web
         ports:
