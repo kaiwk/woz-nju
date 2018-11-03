@@ -22,5 +22,3 @@ class Task(db.Model):
 def init_app(app):
     db.init_app(app)
     migrate.init_app(app, db)
-    # app.cli.add_command(init_db_command)
-
