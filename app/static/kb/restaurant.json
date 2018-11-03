@@ -6,13 +6,15 @@
             "招牌全家福",
             "皮肚火腿肠"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "8.0",
         "environment": "7.6",
         "taste": "7.7",
         "address": "青岛路31号102室",
         "mean_price": "￥19",
-        "name": "张府园大碗面"
+        "name": "张府园大碗面",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "025-83325959",
@@ -21,13 +23,15 @@
             "胡萝卜素锅贴",
             "现榨豆浆"
         ],
-        "tag": "小吃快餐",
+        "tag": "水饺",
         "service": "8.0",
         "environment": "8.0",
         "taste": "7.9",
         "address": "汉口路47号-4",
         "mean_price": "￥38",
-        "name": "禾园饺子馆(南大汉口路店)"
+        "name": "禾园饺子馆(南大汉口路店)",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "18168060717",
@@ -36,13 +40,15 @@
             "苏氏爆鱼面",
             "虾仁面"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.8",
         "environment": "8.3",
         "taste": "8.2",
         "address": "湖南路街道汉口路42号",
         "mean_price": "￥19",
-        "name": "東吴面馆"
+        "name": "東吴面馆",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13805177560",
@@ -51,13 +57,15 @@
             "蜜汁香芋排骨套餐",
             "藤椒鸡腿套餐"
         ],
-        "tag": "小吃快餐",
+        "tag": "骨头饭",
         "service": "9.2",
         "environment": "9.1",
         "taste": "9.0",
         "address": "汉口路75-2号",
         "mean_price": "￥26",
-        "name": "箪食记(汉口路店)"
+        "name": "箪食记(汉口路店)",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -66,13 +74,15 @@
             "麻辣香锅",
             "盖浇饭"
         ],
-        "tag": "小吃快餐",
+        "tag": "食堂",
         "service": "8.0",
         "environment": "7.7",
         "taste": "7.9",
         "address": "汉口路南京大学内",
         "mean_price": "￥15",
-        "name": "南京大学第一食堂"
+        "name": "南京大学第一食堂",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "18751871709",
@@ -81,13 +91,15 @@
             "鸭血馄饨",
             "雪菜肉丝"
         ],
-        "tag": "小吃快餐",
+        "tag": "馄饨",
         "service": "7.8",
         "environment": "7.7",
         "taste": "8.0",
         "address": "青岛路8号",
         "mean_price": "￥7",
-        "name": "安庆馄饨店"
+        "name": "安庆馄饨店",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "13851606190",
@@ -96,13 +108,15 @@
             "土豆筒骨饭",
             "冬瓜筒骨饭"
         ],
-        "tag": "小吃快餐",
+        "tag": "骨头饭",
         "service": "8.3",
         "environment": "8.1",
         "taste": "7.8",
         "address": "青岛路10号1栋105室",
         "mean_price": "￥17",
-        "name": "东食家骨头饭(青岛路店)"
+        "name": "东食家骨头饭(青岛路店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "17361868121",
@@ -111,13 +125,15 @@
             "毛肚",
             "龙利鱼片"
         ],
-        "tag": "小吃快餐",
+        "tag": "冒菜",
         "service": "8.3",
         "environment": "8.3",
         "taste": "8.2",
         "address": "青岛路2号",
         "mean_price": "￥30",
-        "name": "嘿!有家小冒菜(青岛路店)"
+        "name": "嘿!有家小冒菜(青岛路店)",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "025-58813338",
@@ -126,13 +142,15 @@
             "鳕鱼排蛋包饭",
             "奥尔良烤鸡腿蛋包饭"
         ],
-        "tag": "小吃快餐",
+        "tag": "蛋包饭",
         "service": "7.9",
         "environment": "7.9",
         "taste": "8.0",
         "address": "青岛路6-1号",
         "mean_price": "￥26",
-        "name": "食壹餐厅"
+        "name": "食壹餐厅",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "13951625113",
@@ -141,13 +159,15 @@
             "皮肚香肠",
             "肉丝猪肝面"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.7",
         "environment": "7.3",
         "taste": "8.1",
         "address": "汉口路40-4号",
         "mean_price": "￥15",
-        "name": "老曹六鲜面馆(汉口路店)"
+        "name": "老曹六鲜面馆(汉口路店)",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "13814090519",
@@ -156,13 +176,15 @@
             "麻辣小面",
             "酸辣粉"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "8.4",
         "environment": "8.2",
         "taste": "8.4",
         "address": "青岛路5-3号",
         "mean_price": "￥15",
-        "name": "灶记重庆小面"
+        "name": "灶记重庆小面",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "15380843252",
@@ -171,13 +193,15 @@
             "豆泡",
             "牛杂米粉汤"
         ],
-        "tag": "小吃快餐",
+        "tag": "螺蛳粉",
         "service": "8.5",
         "environment": "8.1",
         "taste": "8.5",
         "address": "小粉桥7-1号",
         "mean_price": "￥17",
-        "name": "桂皖小吃螺蛳粉"
+        "name": "桂皖小吃螺蛳粉",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13062596839",
@@ -186,13 +210,15 @@
             "蒜泥白肉",
             "冰粉"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "8.7",
         "environment": "7.5",
         "taste": "9.0",
         "address": "青岛路2号02幢4单元103室",
         "mean_price": "￥16",
-        "name": "四川宜宾燃面"
+        "name": "四川宜宾燃面",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13347700611",
@@ -201,13 +227,15 @@
             "鲜肉水饺",
             "白菜肉水饺"
         ],
-        "tag": "小吃快餐",
+        "tag": "水饺",
         "service": "7.9",
         "environment": "7.2",
         "taste": "8.7",
         "address": "汉口路22号南京大学鼓楼校区",
         "mean_price": "￥9",
-        "name": "大叔水饺"
+        "name": "大叔水饺",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "13260932671",
@@ -216,24 +244,28 @@
             "烤冷面",
             "加里脊烤肠金针菇"
         ],
-        "tag": "小吃快餐",
+        "tag": "烤冷面",
         "service": "9.1",
         "environment": "8.2",
         "taste": "8.9",
         "address": "汉口路27-1号",
         "mean_price": "￥9",
-        "name": "东北烤冷面"
+        "name": "东北烤冷面",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.4",
         "environment": "7.4",
         "taste": "7.4",
         "address": "鼓楼街22号",
         "mean_price": "",
-        "name": "又一新饭店中餐厅"
+        "name": "又一新饭店中餐厅",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13601401727",
@@ -242,39 +274,45 @@
             "特色臭豆腐",
             "微辣臭豆腐"
         ],
-        "tag": "小吃快餐",
+        "tag": "臭豆腐",
         "service": "7.9",
         "environment": "7.9",
         "taste": "7.8",
         "address": "汉口路48号凡几咖啡旁",
         "mean_price": "￥31",
-        "name": "杨胖子砂锅麻辣烫(南大店)"
+        "name": "杨胖子砂锅麻辣烫(南大店)",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "13584067026",
         "recommends": [
             "手抓饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "手抓饼",
         "service": "7.3",
         "environment": "7.3",
         "taste": "7.4",
         "address": "汉口路22号南京大学鼓楼校区大门",
         "mean_price": "",
-        "name": "台湾手抓饼(南京大学店)"
+        "name": "台湾手抓饼(南京大学店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [
             "双蛋灌饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "灌饼",
         "service": "7.5",
         "environment": "7.3",
         "taste": "7.4",
         "address": "汉口路22号",
         "mean_price": "",
-        "name": "周周灌饼"
+        "name": "周周灌饼",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -282,13 +320,15 @@
             "黄焖鸭米饭",
             "黄焖鸡米饭"
         ],
-        "tag": "小吃快餐",
+        "tag": "黄焖鸡",
         "service": "7.5",
         "environment": "7.5",
         "taste": "7.5",
         "address": "汉口路",
         "mean_price": "",
-        "name": "凌周轩阁黄焖鸡米饭"
+        "name": "凌周轩阁黄焖鸡米饭",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "1520514409818114808698",
@@ -297,13 +337,15 @@
             "腊汁拌面",
             "臊子面"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.2",
         "environment": "6.9",
         "taste": "7.5",
         "address": "汉口路73-1号",
         "mean_price": "￥11",
-        "name": "西北特色面馆"
+        "name": "西北特色面馆",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "15261411260",
@@ -311,13 +353,15 @@
             "羊肉泡馍",
             "新疆大盘鸡"
         ],
-        "tag": "面馆",
+        "tag": "兰州拉面",
         "service": "7.5",
         "environment": "7.4",
         "taste": "7.5",
         "address": "汉口路36号",
         "mean_price": "",
-        "name": "兰州拉面刀削面(汉口路店)"
+        "name": "兰州拉面刀削面(汉口路店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15050549766",
@@ -326,13 +370,15 @@
             "酱香饼",
             "鸡蛋里脊手抓饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "手抓饼",
         "service": "7.1",
         "environment": "6.7",
         "taste": "7.5",
         "address": "汉口路47-3号",
         "mean_price": "￥6",
-        "name": "鹿记食铺"
+        "name": "鹿记食铺",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "025-86812222",
@@ -341,24 +387,28 @@
             "肉包",
             "烧卖"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.3",
         "environment": "7.5",
         "taste": "7.5",
         "address": "中山路251-1号新纪元大酒店B座",
         "mean_price": "￥11",
-        "name": "新纪元大酒店外卖部"
+        "name": "新纪元大酒店外卖部",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "025-86812222",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.6",
         "environment": "7.6",
         "taste": "7.6",
         "address": "中山路251号-1新纪元大酒店2层",
         "mean_price": "",
-        "name": "新纪元大酒店-嘉和厅"
+        "name": "新纪元大酒店-嘉和厅",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15335153398",
@@ -367,13 +417,15 @@
             "鱼香肉丝包",
             "五香茶叶蛋"
         ],
-        "tag": "小吃快餐",
+        "tag": "包子",
         "service": "7.6",
         "environment": "7.7",
         "taste": "7.7",
         "address": "汉口路南京大学鼓楼校区康达眼睛旁",
         "mean_price": "",
-        "name": "蒸全味"
+        "name": "蒸全味",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -382,13 +434,15 @@
             "胡萝卜丝",
             "里脊菜煎饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "煎饼",
         "service": "7.7",
         "environment": "7.6",
         "taste": "7.6",
         "address": "汉口路47-7号",
         "mean_price": "￥10",
-        "name": "家天下菜煎饼"
+        "name": "家天下菜煎饼",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -397,26 +451,30 @@
             "烤面筋",
             "梅干菜"
         ],
-        "tag": "小吃快餐",
+        "tag": "锅盔",
         "service": "7.4",
         "environment": "7.3",
         "taste": "7.6",
         "address": "汉口路41号",
         "mean_price": "￥5",
-        "name": "荆州锅盔"
+        "name": "荆州锅盔",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [
             "串串"
         ],
-        "tag": "小吃快餐",
+        "tag": "串串",
         "service": "7.6",
         "environment": "7.6",
         "taste": "7.6",
         "address": "军区总院门口",
         "mean_price": "",
-        "name": "总院门口夜间炸串"
+        "name": "总院门口夜间炸串",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15651851899",
@@ -425,13 +483,15 @@
             "猪肝肉丝面",
             "红烧牛肉面"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.1",
         "environment": "7.1",
         "taste": "7.1",
         "address": "汉口路与小粉桥交叉口",
         "mean_price": "￥13",
-        "name": "如意面馆"
+        "name": "如意面馆",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "15996222776",
@@ -440,13 +500,15 @@
             "酸菜肉末包",
             "蛋黄鲜肉包"
         ],
-        "tag": "小吃快餐",
+        "tag": "包子",
         "service": "7.4",
         "environment": "7.1",
         "taste": "7.5",
         "address": "汉口路48-1号东单元102室",
         "mean_price": "￥3",
-        "name": "金麦笼大包坊(南大店)"
+        "name": "金麦笼大包坊(南大店)",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "13851644907",
@@ -455,13 +517,15 @@
             "香菇",
             "金针菇"
         ],
-        "tag": "小吃快餐",
+        "tag": "黄焖鸡",
         "service": "7.2",
         "environment": "7.3",
         "taste": "7.5",
         "address": "汉口路38号",
         "mean_price": "￥16",
-        "name": "膳当家黄焖鸡米饭(南大店)"
+        "name": "膳当家黄焖鸡米饭(南大店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "025-83243262",
@@ -470,13 +534,15 @@
             "酱卤猪蹄",
             "香菇鸡肉水饺"
         ],
-        "tag": "小吃快餐",
+        "tag": "水饺",
         "service": "7.0",
         "environment": "6.8",
         "taste": "7.2",
         "address": "汉口路42号新杂志后侧巷内",
         "mean_price": "￥13",
-        "name": "哈尔滨水饺"
+        "name": "哈尔滨水饺",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -485,13 +551,15 @@
             "红烧鸡翅",
             "酸梅汤"
         ],
-        "tag": "小吃快餐",
+        "tag": "食堂",
         "service": "7.3",
         "environment": "7.3",
         "taste": "7.3",
         "address": "珠江路南京大学内",
         "mean_price": "",
-        "name": "南大第三食堂"
+        "name": "南大第三食堂",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -500,13 +568,15 @@
             "蒜香五花肉",
             "鸡排铁板饭"
         ],
-        "tag": "小吃快餐",
+        "tag": "铁板饭",
         "service": "7.1",
         "environment": "7.2",
         "taste": "7.3",
         "address": "汉口路路41号",
         "mean_price": "",
-        "name": "小坂家"
+        "name": "小坂家",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -515,13 +585,15 @@
             "五香熏鱼",
             "咕噜肉"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.3",
         "environment": "7.3",
         "taste": "7.3",
         "address": "中山路321号",
         "mean_price": "￥15",
-        "name": "爱玛客简餐厅"
+        "name": "爱玛客简餐厅",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "18355568673",
@@ -530,13 +602,15 @@
             "山药",
             "猪脑"
         ],
-        "tag": "小吃快餐",
+        "tag": "麻辣烫",
         "service": "7.3",
         "environment": "7.1",
         "taste": "7.3",
         "address": "青岛路2号院内",
         "mean_price": "￥16",
-        "name": "大宝麻辣烫"
+        "name": "大宝麻辣烫",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15895994100",
@@ -545,13 +619,15 @@
             "炸酱酸辣粉",
             "肥肠酸辣粉"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.2",
         "environment": "7.0",
         "taste": "7.2",
         "address": "中山路237号",
         "mean_price": "",
-        "name": "郎妹儿重庆小面"
+        "name": "郎妹儿重庆小面",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -560,13 +636,15 @@
             "黄金鸡软骨",
             "黄金脆肚串"
         ],
-        "tag": "小吃快餐",
+        "tag": "炸鸡",
         "service": "7.3",
         "environment": "7.3",
         "taste": "7.3",
         "address": "汉口路73号",
         "mean_price": "",
-        "name": "Enjoy Chicken 共享奇鸡"
+        "name": "Enjoy Chicken 共享奇鸡",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -574,13 +652,15 @@
             "豆腐脑",
             "鸡蛋饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "鸡蛋饼",
         "service": "7.5",
         "environment": "7.4",
         "taste": "7.4",
         "address": "青岛路33号",
         "mean_price": "",
-        "name": "夫妻早点摊"
+        "name": "夫妻早点摊",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -589,13 +669,15 @@
             "大肉面",
             "大肠面"
         ],
-        "tag": "小吃快餐",
+        "tag": "面条",
         "service": "7.4",
         "environment": "7.5",
         "taste": "7.4",
         "address": "汉口路",
         "mean_price": "",
-        "name": "顺意百年老卤面(汉口路店)"
+        "name": "顺意百年老卤面(汉口路店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13813864256",
@@ -604,13 +686,15 @@
             "红烧羊肉",
             "牛肉炒意面"
         ],
-        "tag": "小吃快餐",
+        "tag": "面条",
         "service": "7.3",
         "environment": "7.5",
         "taste": "7.4",
         "address": "金银街16号",
         "mean_price": "￥49",
-        "name": "梧桐深处"
+        "name": "梧桐深处",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "13260788886",
@@ -619,13 +703,15 @@
             "全家福炒饭",
             "火腿肠鸡蛋炒面"
         ],
-        "tag": "小吃快餐",
+        "tag": "面条",
         "service": "7.2",
         "environment": "6.9",
         "taste": "7.5",
         "address": "青岛路与汉口路交界处东南角",
         "mean_price": "￥9",
-        "name": "青岛路炒饭炒面炒凉皮"
+        "name": "青岛路炒饭炒面炒凉皮",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "025-83245967",
@@ -634,13 +720,15 @@
             "西红柿汤",
             "花菜肉片"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.3",
         "taste": "7.4",
         "address": "汉口路38号-1号",
         "mean_price": "￥26",
-        "name": "七德好美食城"
+        "name": "七德好美食城",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "025-52685917",
@@ -649,13 +737,15 @@
             "听装可乐",
             "毛豆烧鸡"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.5",
         "environment": "7.7",
         "taste": "7.4",
         "address": "汉口路36号",
         "mean_price": "￥18",
-        "name": "饭佰味box"
+        "name": "饭佰味box",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13851920868",
@@ -663,13 +753,15 @@
             "烤冷面",
             "肉夹馍"
         ],
-        "tag": "小吃快餐",
+        "tag": "米线",
         "service": "7.2",
         "environment": "7.1",
         "taste": "7.4",
         "address": "汉口路36号",
         "mean_price": "",
-        "name": "鹿记金汤米线"
+        "name": "鹿记金汤米线",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "18351873259",
@@ -678,13 +770,15 @@
             "夫妻肺片",
             "馒头"
         ],
-        "tag": "小吃快餐",
+        "tag": "盐水鸭",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "鼓楼街5号",
         "mean_price": "",
-        "name": "水西门左记鸭子店(鼓楼街菜市场店)"
+        "name": "水西门左记鸭子店(鼓楼街菜市场店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13770691299",
@@ -693,24 +787,28 @@
             "什锦拌饭",
             "酸菜砂锅"
         ],
-        "tag": "小吃快餐",
+        "tag": "砂锅",
         "service": "7.0",
         "environment": "6.8",
         "taste": "7.1",
         "address": "小粉桥巷子内",
         "mean_price": "￥11",
-        "name": "鸿雁砂锅店"
+        "name": "鸿雁砂锅店",
+        "price_range": "便宜",
+        "rate": "不关心"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "南大西门正对的那条街道右边",
         "mean_price": "",
-        "name": "上海小吃店"
+        "name": "上海小吃店",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13805172238",
@@ -719,35 +817,41 @@
             "草莓爆爆乐",
             "美式薯条"
         ],
-        "tag": "小吃快餐",
+        "tag": "炸鸡",
         "service": "7.0",
         "environment": "6.9",
         "taste": "6.9",
         "address": "青岛路陶谷新村交叉口",
         "mean_price": "",
-        "name": "無敵鸡排"
+        "name": "無敵鸡排",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "板栗",
         "service": "7.1",
         "environment": "7.1",
         "taste": "7.1",
         "address": "汉口路",
         "mean_price": "",
-        "name": "福印板栗"
+        "name": "福印板栗",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "咖啡",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "北京西路",
         "mean_price": "",
-        "name": "OASIS CITY CAFE"
+        "name": "OASIS CITY CAFE",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13006219270",
@@ -756,13 +860,15 @@
             "狮子头",
             "宣鱼"
         ],
-        "tag": "小吃快餐",
+        "tag": "黄焖鸡",
         "service": "7.1",
         "environment": "7.1",
         "taste": "7.1",
         "address": "中山路248号",
         "mean_price": "",
-        "name": "黄焖鸡米饭"
+        "name": "黄焖鸡米饭",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -771,35 +877,41 @@
             "江湖里脊肉",
             "江湖大鸡腿"
         ],
-        "tag": "小吃快餐",
+        "tag": "鱿鱼",
         "service": "7.2",
         "environment": "7.2",
         "taste": "6.9",
         "address": "平仓巷南京大学汉口路73号-1",
         "mean_price": "",
-        "name": "江湖鱿鱼"
+        "name": "江湖鱿鱼",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "汉口路22号",
         "mean_price": "",
-        "name": "还是健康的人"
+        "name": "还是健康的人",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13851403120",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.1",
         "environment": "7.1",
         "taste": "7.1",
         "address": "小粉桥7-3号",
         "mean_price": "",
-        "name": "饭得饱中式快餐"
+        "name": "饭得饱中式快餐",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "18752023233",
@@ -808,24 +920,28 @@
             "炸蒸饺",
             "炒米线"
         ],
-        "tag": "小吃快餐",
+        "tag": "馄饨",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.2",
         "address": "汉口路40号沿街底商",
         "mean_price": "￥13",
-        "name": "沙县小吃"
+        "name": "沙县小吃",
+        "price_range": "便宜",
+        "rate": "高"
     },
     {
         "phone": "13115018500",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "汤包",
         "service": "7.1",
         "environment": "7.1",
         "taste": "7.1",
         "address": "双龙巷12号",
         "mean_price": "",
-        "name": "和州汤包"
+        "name": "和州汤包",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "025-8467931713750971059",
@@ -834,50 +950,58 @@
             "咖喱土豆牛肉包",
             "醇香豆浆"
         ],
-        "tag": "小吃快餐",
+        "tag": "包子",
         "service": "7.1",
         "environment": "7.4",
         "taste": "7.4",
         "address": "青岛路10号3幢2单元105室",
         "mean_price": "",
-        "name": "和善园"
+        "name": "和善园",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "面条",
         "service": "7.3",
         "environment": "7.1",
         "taste": "7.1",
         "address": "平仓巷与青岛路交叉口西50米",
         "mean_price": "",
-        "name": "老陕特色biangbiang面"
+        "name": "老陕特色biangbiang面",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [
             "煎饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "煎饼",
         "service": "7.0",
         "environment": "6.9",
         "taste": "7.0",
         "address": "西妙峰庵",
         "mean_price": "",
-        "name": "徐州煎饼摊子"
+        "name": "徐州煎饼摊子",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "18260003245",
         "recommends": [
             "豆浆"
         ],
-        "tag": "小吃快餐",
+        "tag": "豆浆",
         "service": "7.0",
         "environment": "6.9",
         "taste": "6.9",
         "address": "汉口路22号",
         "mean_price": "",
-        "name": "五谷豆浆(鼓楼南大店)"
+        "name": "五谷豆浆(鼓楼南大店)",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "025-83242981",
@@ -886,13 +1010,15 @@
             "鱼香肉丝",
             "青椒炒蛋"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "陶谷新村1-3号",
         "mean_price": "",
-        "name": "陶谷小吃"
+        "name": "陶谷小吃",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "18662722285",
@@ -901,26 +1027,30 @@
             "韭黄炒肉丝",
             "青椒炒素鸡"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "青岛路2-6号",
         "mean_price": "",
-        "name": "便当先生"
+        "name": "便当先生",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15869005195",
         "recommends": [
             "冒菜"
         ],
-        "tag": "小吃快餐",
+        "tag": "冒菜",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "汉口路40-6号",
         "mean_price": "",
-        "name": "成都冒菜"
+        "name": "成都冒菜",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15295590998",
@@ -929,13 +1059,15 @@
             "黄金鸡柳饭",
             "茄汁牛肉酱意面"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "汉口路9号",
         "mean_price": "",
-        "name": "四季亭"
+        "name": "四季亭",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "15951812534",
@@ -944,13 +1076,15 @@
             "三鲜套饭",
             "水煮肉片米线"
         ],
-        "tag": "小吃快餐",
+        "tag": "米线",
         "service": "6.8",
         "environment": "6.7",
         "taste": "6.9",
         "address": "汉口路38号",
         "mean_price": "￥13",
-        "name": "云蒙过桥米线"
+        "name": "云蒙过桥米线",
+        "price_range": "便宜",
+        "rate": "不关心"
     },
     {
         "phone": "13675128880",
@@ -959,63 +1093,73 @@
             "皮肚猪肝肉丝面",
             "烤面筋"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "7.0",
         "environment": "6.9",
         "taste": "7.0",
         "address": "汉口路47-2号",
         "mean_price": "￥16",
-        "name": "南湖中华面馆"
+        "name": "南湖中华面馆",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "",
         "recommends": [
             "干锅牛蛙"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "汉口路40-3号",
         "mean_price": "",
-        "name": "百姓小馆(汉口路店)"
+        "name": "百姓小馆(汉口路店)",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [
             "双人冒菜"
         ],
-        "tag": "小吃快餐",
+        "tag": "冒菜",
         "service": "7.1",
         "environment": "7.0",
         "taste": "7.0",
         "address": "珠江路",
         "mean_price": "",
-        "name": "成都九斗碗冒菜"
+        "name": "成都九斗碗冒菜",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [
             "鸡排"
         ],
-        "tag": "小吃快餐",
+        "tag": "炸鸡",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "汉口路73号临",
         "mean_price": "",
-        "name": "状元脆皮鸡"
+        "name": "状元脆皮鸡",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "7.0",
         "environment": "7.0",
         "taste": "7.0",
         "address": "金银街17号2幢2单元",
         "mean_price": "",
-        "name": "淡香精致"
+        "name": "淡香精致",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
@@ -1023,13 +1167,15 @@
             "炸鸡柳",
             "黄金炸鸡"
         ],
-        "tag": "小吃快餐",
+        "tag": "炸鸡",
         "service": "7.2",
         "environment": "7.0",
         "taste": "7.2",
         "address": "陶谷新村汉口路75号",
         "mean_price": "",
-        "name": "享奇鸡"
+        "name": "享奇鸡",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "13913000097",
@@ -1038,13 +1184,15 @@
             "茅台镇糊涂仙酒",
             "江小白"
         ],
-        "tag": "小吃快餐",
+        "tag": "牛肉汤",
         "service": "6.9",
         "environment": "6.9",
         "taste": "6.9",
         "address": "天津路1号",
         "mean_price": "￥16",
-        "name": "李记淮南牛肉汤"
+        "name": "李记淮南牛肉汤",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "18805172659",
@@ -1053,26 +1201,30 @@
             "烤金针菇",
             "烤羊肉"
         ],
-        "tag": "小吃快餐",
+        "tag": "烧烤",
         "service": "6.9",
         "environment": "6.7",
         "taste": "7.0",
         "address": "青岛路31号",
         "mean_price": "￥35",
-        "name": "真火烧烤"
+        "name": "真火烧烤",
+        "price_range": "昂贵",
+        "rate": "不关心"
     },
     {
         "phone": "13813855192",
         "recommends": [
             "西红柿鸡蛋面"
         ],
-        "tag": "面馆",
+        "tag": "面条",
         "service": "6.4",
         "environment": "6.4",
         "taste": "6.4",
         "address": "中山路245号",
         "mean_price": "",
-        "name": "农家小煮面"
+        "name": "农家小煮面",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "18100619444",
@@ -1081,13 +1233,15 @@
             "鸡蛋",
             "杂粮煎饼"
         ],
-        "tag": "小吃快餐",
+        "tag": "煎饼",
         "service": "6.9",
         "environment": "6.8",
         "taste": "6.9",
         "address": "汉口路27号",
         "mean_price": "￥5",
-        "name": "杂粮煎饼"
+        "name": "杂粮煎饼",
+        "price_range": "便宜",
+        "rate": "不关心"
     },
     {
         "phone": "13952044360",
@@ -1096,24 +1250,28 @@
             "凉拌粉皮",
             "凉拌西红柿"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "6.8",
         "environment": "6.8",
         "taste": "6.8",
         "address": "汉口路9号哈家庄酸菜鱼馆隔壁",
         "mean_price": "",
-        "name": "群祥餐厅"
+        "name": "群祥餐厅",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "6.8",
         "environment": "6.8",
         "taste": "6.8",
         "address": "天津路",
         "mean_price": "",
-        "name": "鼓医珍宝坊食堂"
+        "name": "鼓医珍宝坊食堂",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "",
@@ -1122,13 +1280,15 @@
             "黄柠檬",
             "赣南脐橙"
         ],
-        "tag": "小吃快餐",
+        "tag": "包子",
         "service": "6.9",
         "environment": "7.0",
         "taste": "6.7",
         "address": "汉口路42号",
         "mean_price": "",
-        "name": "王兴记小笼包"
+        "name": "王兴记小笼包",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "13605188558",
@@ -1137,24 +1297,28 @@
             "老鸭粉丝汤",
             "金陵汤包"
         ],
-        "tag": "小吃快餐",
+        "tag": "老鸭粉丝汤",
         "service": "7.3",
         "environment": "7.0",
         "taste": "6.7",
         "address": "汉口路61号三单元105室",
         "mean_price": "",
-        "name": "小淮鸭·金陵老鸭汤"
+        "name": "小淮鸭·金陵老鸭汤",
+        "price_range": "中等",
+        "rate": "高"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "串串",
         "service": "6.9",
         "environment": "6.9",
         "taste": "6.9",
         "address": "青岛路2-13号",
         "mean_price": "",
-        "name": "串串鲜"
+        "name": "串串鲜",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "15850747778",
@@ -1163,13 +1327,15 @@
             "蚝油生菜",
             "韭菜炒鸡蛋"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "6.9",
         "environment": "6.9",
         "taste": "6.9",
         "address": "陶谷新村6-1号",
         "mean_price": "",
-        "name": "膳食部落(汉口路店)"
+        "name": "膳食部落(汉口路店)",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "18652062587",
@@ -1178,24 +1344,28 @@
             "三鲜面",
             "汤包"
         ],
-        "tag": "小吃快餐",
+        "tag": "老鸭粉丝汤",
         "service": "6.7",
         "environment": "6.7",
         "taste": "7.0",
         "address": "中山路241号",
         "mean_price": "",
-        "name": "珍味老鸭粉丝汤"
+        "name": "珍味老鸭粉丝汤",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "6.9",
         "environment": "6.9",
         "taste": "6.9",
         "address": "中山路327号门诊",
         "mean_price": "",
-        "name": "玛克西姆出品"
+        "name": "玛克西姆出品",
+        "price_range": "中等",
+        "rate": "不关心"
     },
     {
         "phone": "025-83628367",
@@ -1204,23 +1374,27 @@
             "黑椒小牛排饭",
             "招牌猪排浓汤面"
         ],
-        "tag": "小吃快餐",
+        "tag": "中餐",
         "service": "6.9",
         "environment": "7.4",
         "taste": "6.8",
         "address": "中山路321号鼓楼医院新大楼门诊大楼1楼",
         "mean_price": "￥40",
-        "name": "东方既白(中山路店)"
+        "name": "东方既白(中山路店)",
+        "price_range": "昂贵",
+        "rate": "高"
     },
     {
         "phone": "025-52256855",
         "recommends": [],
-        "tag": "小吃快餐",
+        "tag": "食堂",
         "service": "6.9",
         "environment": "6.9",
         "taste": "6.9",
         "address": "中山路321号",
         "mean_price": "",
-        "name": "鼓楼医院食堂"
+        "name": "鼓楼医院食堂",
+        "price_range": "中等",
+        "rate": "不关心"
     }
 ]

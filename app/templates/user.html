@@ -18,7 +18,12 @@
 
   <body>
     <div class="green-box">
-      {{ desc|safe }}
+      {{ desc|safe }} <br><br>
+      <p>
+        1. 如果没有符合规定的餐厅，可以更改条件；如果餐厅没有电话，可以改为索要餐厅地址 <br>
+        2. 如果已经尝试过更改条件，仍未找到，即可回复结束语，如：‘好，谢谢’，‘再会’，‘十分感谢’，‘算了，我突然不饿了’
+      </p>
+      <p>请不要同时打开多个页面填写内容！</p>
     </div>
     <br/>
     <div class="blue-box">
@@ -40,6 +45,7 @@
       </form>
     {% else %}
       <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
+      <p>或关闭网页离开</p>
     {% endif %}
 
     <!-- get flashes -->

@@ -39,6 +39,7 @@
                         '<td>' + rest.name + '</td>' +
                         '<td>' + rest.tag + '</td>' +
                         '<td>' + rest.mean_price + '</td>' +
+                        '<td>' + rest.price_range + '</td>' +
                         '<td>' + rest.phone + '</td>' +
                         '<td>' + rest.address + '</td>' +
                         '<td>' + rest.service + '</td>' +
@@ -58,20 +59,15 @@
                          res = restArr.filter(function (rest) {
                              if (cons['food_type']) {
                                  return rest.tag === cons.food_type
-                             }
+                             } else return true;
                          }).filter(function (rest) {
-                             if (cons['pricerange']) {
-                                 var pricerange = cons['pricerange'];
-                                 var mean_price = Number(rest['mean_price'].slice(1));
-                                 if (pricerange === '昂贵') {
-                                     return mean_price >= 25;
-                                 } else if (pricerange === '一般') {
-                                     return mean_price >= 15 && mean_price < 25;
-                                 } else if (pricerange === '便宜') {
-                                     return mean_price < 15;
-                                 } else if (pricerange === '*') {
-                                     return true;
-                                 }
+                             if (cons['price_range']) {
+                                 return rest['price_range'] === cons['price_range'];
+                             } else return true;
+                         }).filter(function (rest) {
+                             if (cons['rate']) {
+                                 if (cons['rate'] === '不关心') return true
+                                 else return rest['rate'] === cons['rate'];
                              } else return true;
                          });
                          console.log(res)
@@ -103,15 +99,45 @@
 
       {% if log|length == 0 or 'metadata' in log[-1] %}
         <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
+        <p>或关闭网页离开</p>
       {% else %}
         <div class="green-box">
-          <p>请根据上面用户的回答修改以下信息</p>
+
+          <p>
+            请根据上面的对话修改以下信息，要求：<br><br>
+            1. 结合最近的一次用户回复，理解并选择用户的需求 <br>
+            2. 根据情境提交合适的回复 <br>
+            3. 点击 finish，会提供对应的信息，你可以用这些信息回复给用户，如果你觉得用户已经结束了对话，请在提交之前勾选结束框 <br>
+          </p>
+          <p>请不要同时打开多个网页填写内容！</p>
           <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
             <ul>
               <li>
-                <span>用户想要哪种食物类型?</span> <input name="want_food_type" type="text" value=""/> <br/>
-                <span>用户想要的餐厅在哪种价格范围?</span> <input name="want_pricerange" type="text" value=""/> <br/>
+                <span>用户想要哪种食物类型？</span>
+                <select name="want_food_type">
+                  <option value="">空</option>
+                  {% for ft in food_types %}
+                    <option value="{{ ft }}">{{ ft }}</option>
+                  {% endfor %}
+                </select><br/>
+
+                <span>用户想要的餐厅在哪种价格范围？</span>
+                <select name="want_price_range">
+                  <option value="">空</option>
+                  {% for pr in price_ranges %}
+                    <option value="{{ pr }}">{{ pr }}</option>
+                  {% endfor %}
+                </select><br/>
+
+                <span>用户对餐厅服务的要求是？</span>
+                <select name="want_rate">
+                  <option value="">空</option>
+                  {% for r in rates %}
+                    <option value="{{ r }}">{{ r }}</option>
+                  {% endfor %}
+                </select><br/>
               </li>
+              <br><br>
               <li>
                 <span>用户想知道餐厅的食物类型吗？</span>
                 <select name="request_food_type">
@@ -121,7 +147,7 @@
                 <br/>
 
                 <span>用户想知道餐厅的价格范围吗？</span>
-                <select name="request_pricerange">
+                <select name="request_price_range">
                   <option value="no">No</option>
                   <option value="yes">Yes</option>
                 </select>
@@ -149,12 +175,14 @@
                 <br/>
               </li>
             </ul>
+            <br>
             <input type="submit" value="finish">
           </form>
         </div>
-
+        <br>
         <form action="{{ url_for('wizard.index') }}" method="post">
           <input type="text" name="sys_resp" size="200">
+          <input type="checkbox" name="is_over">对话已结束<br>
           <input type="submit" value="Submit">
         </form>
       {% endif %}
@@ -179,7 +207,8 @@
           <tr>
             <th>餐厅名</th>
             <th>食物类型</th>
-            <th>价格范围</th>
+            <th>平均价格</th>
+            <th>价格定位</th>
             <th>电话</th>
             <th>地址</th>
             <th>服务评分</th>

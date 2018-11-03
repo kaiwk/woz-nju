@@ -23,7 +23,7 @@ def index():
         body = json.loads(task.body)
         desc = body['goal']['message']
         log = body['log']
-        db.session.remove()
+        db.session.commit()
         return render_template('user.html', desc=desc, log=log)
 
     elif request.method == 'POST':
@@ -38,6 +38,7 @@ def index():
             task.body = json.dumps(body, ensure_ascii=False)
             task.selected = False
             db.session.commit()
+            session.clear()
             return render_template('user.html', desc=desc, log=log)
         else:
             flash('回复内容不能为空哦')
