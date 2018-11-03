@@ -3,7 +3,7 @@ import random
 import datetime
 
 from flask import Blueprint, session, redirect, url_for, current_app
-from sqlalchemy import not_
+from sqlalchemy import not_, func
 
 from .database import Task, db
 from .utils import get_tasks
@@ -20,6 +20,7 @@ def index():
 
     task = db.session.query(Task).with_for_update()\
         .filter(not_(Task.selected) & not_(Task.finished))\
+        .order_by(func.rand())\
         .first()
 
     if task is None:
