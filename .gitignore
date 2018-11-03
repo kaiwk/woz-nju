@@ -1,4 +1,5 @@
 /instance
 /data
 /.idea
+.mysql-env
 *.pyc

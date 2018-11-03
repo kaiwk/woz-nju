@@ -31,11 +31,8 @@ services:
           - ./data:/var/lib/mysql
         ports:
             - 3306:3306
-        environment:
-            - MYSQL_ROOT_PASSWORD=1234qwer # change the mysql root password
-            - MYSQL_DATABASE=nju_dc
-            - MYSQL_USER=nju_dc
-            - MYSQL_PASSWORD=nju_dc_pass # change mysql user password
+        env_file:
+          - .mysql-env
         command: ['mysqld', '--max-connections=200',
                             '--character-set-server=utf8mb4',
                             '--collation-server=utf8mb4_unicode_ci']
