@@ -25,10 +25,8 @@ mysqlclient
 pylint
 python-dateutil
 python-editor
-python-engineio
-python-socketio
 six
 smmap2
 SQLAlchemy
 Werkzeug
-wrapt==1.10.11
+wrapt

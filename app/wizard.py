@@ -102,5 +102,3 @@ def get_task_attr():
     price_ranges = list(set([t['price_range'] for t in tasks]))
     rates = ['高', '不关心']
     return food_types, price_ranges, rates
-
-
