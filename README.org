@@ -1,31 +1,10 @@
 * Prerequisites and Dependencies
 
-1. database: =sudo apt install sqlite3=
-2. web server: =sudo apt install nginx=
-3. WSGI server: gunicorn, it should be installed with Python3 packages
-4. Python3 packages: create a Python3 virtul environment, activate it, then =pip install -r requirements.txt=
-5. enter project root directory, =mkdir -p instance/tasks=, there should be a =instance/config.py=, this file is secret, and not included in github repo.
-6. generate tasks, execute script =./genTask.py=, the tasks should be generated in =instance/tasks=
-7. set up flask environment, execute =source flask_env.sh=
-8. initialize database, =flask init-db=
-9. run in debug mode, =flask run=, ensure everything works
-
-After installing all the dependencies, enter the project root, ensure gunicorn work correctly:
-
-#+BEGIN_SRC sh
-  gunicorn --worker-class eventlet -w 1 "nju_dc:create_app()" -b 0.0.0.0:5000 --reload
-#+END_SRC
+Install =Docker= and =Docker Compose=.
 
 * Deployment
 
-1. link nginx conf file:
-   #+BEGIN_SRC sh
-     sudo ln -s /path/to/nju_dc.conf /etc/nginx/sites-enabled/default
-   #+END_SRC
+Enter the project root, and execute:
 
-2. reload nginx conf: =sudo nginx -s reload=, check everything is correct
-3. restart nginx: =sudo systemctl restart nginx=
-4. after that, start WSGI server, in our case it's gunicorn
-   #+BEGIN_SRC sh
-     gunicorn --worker-class eventlet -w 1 "nju_dc:create_app()" -b 0.0.0.0:5000 --reload
-   #+END_SRC
+1. =sudo docker-compose build=
+2. =sudo docker-compose up=
