@@ -14,6 +14,7 @@ class Task(db.Model):
     selected = db.Column(db.Boolean, default=False)
     finished = db.Column(db.Boolean, default=False)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.utcnow)
+    priority = db.Column(db.Integer, default=0)
 
     def __repr__(self):
         return '<Task {}, finished:{}>'.format(self.id, self.finished)

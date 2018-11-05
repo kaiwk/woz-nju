@@ -20,7 +20,7 @@ def index():
 
     task = db.session.query(Task).with_for_update()\
         .filter(not_(Task.selected) & not_(Task.finished))\
-        .order_by(func.rand())\
+        .order_by(Task.priority.desc())\
         .first()
 
     if task is None:
@@ -45,7 +45,7 @@ def index():
 
 def reset_task_selected():
     current_time = datetime.datetime.utcnow()
-    one_hour_ago = current_time - datetime.timedelta(hours=1, minutes=30)
+    one_hour_ago = current_time - datetime.timedelta(minutes=30)
     tasks = db.session.query(Task).with_for_update() \
         .filter((Task.updated_at < one_hour_ago) & Task.selected)
 

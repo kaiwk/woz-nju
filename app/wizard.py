@@ -4,7 +4,7 @@ from flask import (Blueprint, render_template, request, session, jsonify,
                    redirect, url_for, current_app, flash)
 
 from .database import Task, db
-from .utils import get_tasks
+from .utils import get_tasks, get_priority
 
 bp = Blueprint('wizard', __name__,
                static_folder='static',
@@ -45,6 +45,7 @@ def index():
             body['log'][-1]['text'].append(request.form['sys_resp'])
             body['log'][-1]['metadata'] = session['metadata']
             task.body = json.dumps(body, ensure_ascii=False)
+            task.priority = get_priority(body)
             task.selected = False
             task.finished = is_over
             db.session.commit()

@@ -4,6 +4,7 @@ from flask import (Blueprint, render_template, request, session, redirect,
                    url_for, current_app, flash)
 
 from .database import Task, db
+from .utils import get_priority
 
 bp = Blueprint('user', __name__,
                static_folder='static',
@@ -36,6 +37,7 @@ def index():
             body['log'].append({'text': [resp]})
             log = body['log']
             task.body = json.dumps(body, ensure_ascii=False)
+            task.priority = get_priority(body)
             task.selected = False
             db.session.commit()
             session.clear()
