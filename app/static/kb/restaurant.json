@@ -14,7 +14,8 @@
         "mean_price": "￥19",
         "name": "张府园大碗面",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "025-83325959",
@@ -31,7 +32,8 @@
         "mean_price": "￥38",
         "name": "禾园饺子馆(南大汉口路店)",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "18168060717",
@@ -48,7 +50,8 @@
         "mean_price": "￥19",
         "name": "東吴面馆",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "湖南路"
     },
     {
         "phone": "13805177560",
@@ -65,7 +68,8 @@
         "mean_price": "￥26",
         "name": "箪食记(汉口路店)",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -82,7 +86,8 @@
         "mean_price": "￥15",
         "name": "南京大学第一食堂",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "18751871709",
@@ -99,7 +104,8 @@
         "mean_price": "￥7",
         "name": "安庆馄饨店",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "13851606190",
@@ -116,7 +122,8 @@
         "mean_price": "￥17",
         "name": "东食家骨头饭(青岛路店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "17361868121",
@@ -133,7 +140,8 @@
         "mean_price": "￥30",
         "name": "嘿!有家小冒菜(青岛路店)",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "025-58813338",
@@ -150,7 +158,8 @@
         "mean_price": "￥26",
         "name": "食壹餐厅",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "13951625113",
@@ -167,7 +176,8 @@
         "mean_price": "￥15",
         "name": "老曹六鲜面馆(汉口路店)",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13814090519",
@@ -184,7 +194,8 @@
         "mean_price": "￥15",
         "name": "灶记重庆小面",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "15380843252",
@@ -201,7 +212,8 @@
         "mean_price": "￥17",
         "name": "桂皖小吃螺蛳粉",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "小粉桥"
     },
     {
         "phone": "13062596839",
@@ -218,7 +230,8 @@
         "mean_price": "￥16",
         "name": "四川宜宾燃面",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "13347700611",
@@ -235,7 +248,8 @@
         "mean_price": "￥9",
         "name": "大叔水饺",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13260932671",
@@ -252,7 +266,8 @@
         "mean_price": "￥9",
         "name": "东北烤冷面",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -265,7 +280,8 @@
         "mean_price": "",
         "name": "又一新饭店中餐厅",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "鼓楼街"
     },
     {
         "phone": "13601401727",
@@ -282,7 +298,8 @@
         "mean_price": "￥31",
         "name": "杨胖子砂锅麻辣烫(南大店)",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13584067026",
@@ -297,7 +314,8 @@
         "mean_price": "",
         "name": "台湾手抓饼(南京大学店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -312,7 +330,8 @@
         "mean_price": "",
         "name": "周周灌饼",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -328,7 +347,8 @@
         "mean_price": "",
         "name": "凌周轩阁黄焖鸡米饭",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "1520514409818114808698",
@@ -345,7 +365,8 @@
         "mean_price": "￥11",
         "name": "西北特色面馆",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "15261411260",
@@ -361,7 +382,8 @@
         "mean_price": "",
         "name": "兰州拉面刀削面(汉口路店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "15050549766",
@@ -378,7 +400,8 @@
         "mean_price": "￥6",
         "name": "鹿记食铺",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "025-86812222",
@@ -395,7 +418,8 @@
         "mean_price": "￥11",
         "name": "新纪元大酒店外卖部",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "025-86812222",
@@ -408,7 +432,8 @@
         "mean_price": "",
         "name": "新纪元大酒店-嘉和厅",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "15335153398",
@@ -425,7 +450,8 @@
         "mean_price": "",
         "name": "蒸全味",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -442,7 +468,8 @@
         "mean_price": "￥10",
         "name": "家天下菜煎饼",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -459,7 +486,8 @@
         "mean_price": "￥5",
         "name": "荆州锅盔",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -474,7 +502,8 @@
         "mean_price": "",
         "name": "总院门口夜间炸串",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "军区总院"
     },
     {
         "phone": "15651851899",
@@ -491,7 +520,8 @@
         "mean_price": "￥13",
         "name": "如意面馆",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "15996222776",
@@ -508,7 +538,8 @@
         "mean_price": "￥3",
         "name": "金麦笼大包坊(南大店)",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13851644907",
@@ -525,7 +556,8 @@
         "mean_price": "￥16",
         "name": "膳当家黄焖鸡米饭(南大店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "025-83243262",
@@ -542,7 +574,8 @@
         "mean_price": "￥13",
         "name": "哈尔滨水饺",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -559,7 +592,8 @@
         "mean_price": "",
         "name": "南大第三食堂",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "珠江路"
     },
     {
         "phone": "",
@@ -576,7 +610,8 @@
         "mean_price": "",
         "name": "小坂家",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -593,7 +628,8 @@
         "mean_price": "￥15",
         "name": "爱玛客简餐厅",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "18355568673",
@@ -610,7 +646,8 @@
         "mean_price": "￥16",
         "name": "大宝麻辣烫",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "15895994100",
@@ -627,7 +664,8 @@
         "mean_price": "",
         "name": "郎妹儿重庆小面",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "",
@@ -644,7 +682,8 @@
         "mean_price": "",
         "name": "Enjoy Chicken 共享奇鸡",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -660,7 +699,8 @@
         "mean_price": "",
         "name": "夫妻早点摊",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "",
@@ -677,7 +717,8 @@
         "mean_price": "",
         "name": "顺意百年老卤面(汉口路店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13813864256",
@@ -694,7 +735,8 @@
         "mean_price": "￥49",
         "name": "梧桐深处",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "金银街"
     },
     {
         "phone": "13260788886",
@@ -711,7 +753,8 @@
         "mean_price": "￥9",
         "name": "青岛路炒饭炒面炒凉皮",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "025-83245967",
@@ -728,7 +771,8 @@
         "mean_price": "￥26",
         "name": "七德好美食城",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "025-52685917",
@@ -745,7 +789,8 @@
         "mean_price": "￥18",
         "name": "饭佰味box",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13851920868",
@@ -761,7 +806,8 @@
         "mean_price": "",
         "name": "鹿记金汤米线",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "18351873259",
@@ -778,7 +824,8 @@
         "mean_price": "",
         "name": "水西门左记鸭子店(鼓楼街菜市场店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "鼓楼街"
     },
     {
         "phone": "13770691299",
@@ -795,7 +842,8 @@
         "mean_price": "￥11",
         "name": "鸿雁砂锅店",
         "price_range": "便宜",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "小粉桥"
     },
     {
         "phone": "",
@@ -808,7 +856,8 @@
         "mean_price": "",
         "name": "上海小吃店",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13805172238",
@@ -825,7 +874,8 @@
         "mean_price": "",
         "name": "無敵鸡排",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "青岛路"
     },
     {
         "phone": "",
@@ -838,7 +888,8 @@
         "mean_price": "",
         "name": "福印板栗",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -851,7 +902,8 @@
         "mean_price": "",
         "name": "OASIS CITY CAFE",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "北京西路"
     },
     {
         "phone": "13006219270",
@@ -868,7 +920,8 @@
         "mean_price": "",
         "name": "黄焖鸡米饭",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "",
@@ -885,7 +938,8 @@
         "mean_price": "",
         "name": "江湖鱿鱼",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -898,7 +952,8 @@
         "mean_price": "",
         "name": "还是健康的人",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13851403120",
@@ -911,7 +966,8 @@
         "mean_price": "",
         "name": "饭得饱中式快餐",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "小粉桥"
     },
     {
         "phone": "18752023233",
@@ -928,7 +984,8 @@
         "mean_price": "￥13",
         "name": "沙县小吃",
         "price_range": "便宜",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "13115018500",
@@ -941,7 +998,8 @@
         "mean_price": "",
         "name": "和州汤包",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "双龙巷"
     },
     {
         "phone": "025-8467931713750971059",
@@ -958,7 +1016,8 @@
         "mean_price": "",
         "name": "和善园",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "",
@@ -971,22 +1030,8 @@
         "mean_price": "",
         "name": "老陕特色biangbiang面",
         "price_range": "中等",
-        "rate": "高"
-    },
-    {
-        "phone": "",
-        "recommends": [
-            "煎饼"
-        ],
-        "tag": "煎饼",
-        "service": "7.0",
-        "environment": "6.9",
-        "taste": "7.0",
-        "address": "西妙峰庵",
-        "mean_price": "",
-        "name": "徐州煎饼摊子",
-        "price_range": "中等",
-        "rate": "不关心"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "18260003245",
@@ -1001,7 +1046,8 @@
         "mean_price": "",
         "name": "五谷豆浆(鼓楼南大店)",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "025-83242981",
@@ -1018,7 +1064,8 @@
         "mean_price": "",
         "name": "陶谷小吃",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "陶谷新村"
     },
     {
         "phone": "18662722285",
@@ -1035,7 +1082,8 @@
         "mean_price": "",
         "name": "便当先生",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "青岛路"
     },
     {
         "phone": "15869005195",
@@ -1050,7 +1098,8 @@
         "mean_price": "",
         "name": "成都冒菜",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "15295590998",
@@ -1067,7 +1116,8 @@
         "mean_price": "",
         "name": "四季亭",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "15951812534",
@@ -1084,7 +1134,8 @@
         "mean_price": "￥13",
         "name": "云蒙过桥米线",
         "price_range": "便宜",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "13675128880",
@@ -1101,7 +1152,8 @@
         "mean_price": "￥16",
         "name": "南湖中华面馆",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -1116,7 +1168,8 @@
         "mean_price": "",
         "name": "百姓小馆(汉口路店)",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -1131,7 +1184,8 @@
         "mean_price": "",
         "name": "成都九斗碗冒菜",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "珠江路"
     },
     {
         "phone": "",
@@ -1146,7 +1200,8 @@
         "mean_price": "",
         "name": "状元脆皮鸡",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -1159,7 +1214,8 @@
         "mean_price": "",
         "name": "淡香精致",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "金银街"
     },
     {
         "phone": "",
@@ -1175,7 +1231,8 @@
         "mean_price": "",
         "name": "享奇鸡",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "陶谷新村"
     },
     {
         "phone": "13913000097",
@@ -1192,7 +1249,8 @@
         "mean_price": "￥16",
         "name": "李记淮南牛肉汤",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "天津路"
     },
     {
         "phone": "18805172659",
@@ -1209,7 +1267,8 @@
         "mean_price": "￥35",
         "name": "真火烧烤",
         "price_range": "昂贵",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "青岛路"
     },
     {
         "phone": "13813855192",
@@ -1224,7 +1283,8 @@
         "mean_price": "",
         "name": "农家小煮面",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "中山路"
     },
     {
         "phone": "18100619444",
@@ -1241,7 +1301,8 @@
         "mean_price": "￥5",
         "name": "杂粮煎饼",
         "price_range": "便宜",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "13952044360",
@@ -1258,7 +1319,8 @@
         "mean_price": "",
         "name": "群祥餐厅",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -1271,7 +1333,8 @@
         "mean_price": "",
         "name": "鼓医珍宝坊食堂",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "天津路"
     },
     {
         "phone": "",
@@ -1288,7 +1351,8 @@
         "mean_price": "",
         "name": "王兴记小笼包",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "汉口路"
     },
     {
         "phone": "13605188558",
@@ -1305,7 +1369,8 @@
         "mean_price": "",
         "name": "小淮鸭·金陵老鸭汤",
         "price_range": "中等",
-        "rate": "高"
+        "rate": "高",
+        "area": "汉口路"
     },
     {
         "phone": "",
@@ -1318,7 +1383,8 @@
         "mean_price": "",
         "name": "串串鲜",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "青岛路"
     },
     {
         "phone": "15850747778",
@@ -1335,7 +1401,8 @@
         "mean_price": "",
         "name": "膳食部落(汉口路店)",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "陶谷新村"
     },
     {
         "phone": "18652062587",
@@ -1352,7 +1419,8 @@
         "mean_price": "",
         "name": "珍味老鸭粉丝汤",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "中山路"
     },
     {
         "phone": "",
@@ -1365,7 +1433,8 @@
         "mean_price": "",
         "name": "玛克西姆出品",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "中山路"
     },
     {
         "phone": "025-83628367",
@@ -1382,7 +1451,8 @@
         "mean_price": "￥40",
         "name": "东方既白(中山路店)",
         "price_range": "昂贵",
-        "rate": "高"
+        "rate": "高",
+        "area": "中山路"
     },
     {
         "phone": "025-52256855",
@@ -1395,6 +1465,7 @@
         "mean_price": "",
         "name": "鼓楼医院食堂",
         "price_range": "中等",
-        "rate": "不关心"
+        "rate": "不关心",
+        "area": "中山路"
     }
 ]

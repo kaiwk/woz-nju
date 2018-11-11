@@ -2,15 +2,41 @@ import json
 import random
 import datetime
 
-from flask import Blueprint, session, redirect, url_for, current_app
-from sqlalchemy import not_, func
+from flask import Blueprint, session, redirect, url_for, current_app, g, jsonify
+from sqlalchemy import not_
 
 from .database import Task, db
-from .utils import get_tasks
+from .utils import get_all_tasks
 
 bp = Blueprint('main', __name__,
                static_folder='static',
                template_folder='templates')
+
+
+@bp.before_request
+def init_global():
+    g.inform_slots = ['name', 'food_type', 'price_range', 'area']
+    g.informs = {
+        'food_type': ['冒菜', '黄焖鸡', '鸡蛋饼', '烧烤', '食堂', '砂锅', '面条', '炸鸡',
+                      '臭豆腐', '螺蛳粉', '串串', '麻辣烫', '老鸭粉丝汤', '包子', '水饺',
+                      '牛肉汤', '鱿鱼', '骨头饭', '铁板饭', '咖啡', '兰州拉面', '板栗', '汤包',
+                      '烤冷面', '煎饼', '中餐', '锅盔', '米线', '馄饨', '灌饼', '蛋包饭', '手抓饼', '豆浆', '盐水鸭'],
+        'price_range': ['昂贵', '中等', '便宜'],
+        'area': ['陶谷新村', '青岛路', '北京西路', '双龙巷', '珠江路', '军区总院',
+                 '小粉桥', '中山路', '湖南路', '汉口路', '天津路', '鼓楼街', '金银街']
+    }
+    g.slot_chinese = {
+        'name': '餐厅名字',
+        'food_type': '食物类型',
+        'price_range': '价格',
+        'area': '所在地区'
+    }
+    g.msg_inform_funcs = {
+        'name': want_name,
+        'food_type': want_food_type,
+        'price_range': want_price_range,
+        'area': want_area
+    }
 
 
 @bp.route('/')
@@ -43,6 +69,162 @@ def index():
     return redirect(url_for('wizard.index'))
 
 
+@bp.route('/get-task')
+def get_task():
+    valid_chance = 0.35
+    if random.uniform(0, 1) > valid_chance:
+        return jsonify(get_valid_task())
+    return jsonify(get_invalid_task())
+
+
+def extract_from_full(task):
+    rest = task['goal']['restaurant']
+    all_requests = rest['request']
+    all_informs = rest['inform']
+
+    # get slots
+    key_list = list(all_informs.keys())
+    inform_slots = [key_list[i] for i in sorted(random.sample(range(len(key_list)), 3))]
+    if len(all_requests) > 1:
+        request_slots = random.sample(all_requests, 2)
+    else:
+        request_slots = all_requests
+    informs = {k: all_informs[k] for k in inform_slots}
+
+    # get messages
+    msg = _get_msg(all_informs, inform_slots, request_slots)
+
+    return _get_task(informs, request_slots, msg)
+
+
+def get_valid_task():
+    valid_tasks = get_all_valid_full_slots_tasks()
+    task = random.choice(valid_tasks)
+    return extract_from_full(task)
+
+
+def get_invalid_task():
+    """
+    An invalid task means there is NOT corresponding data entries in database.
+    :return:
+    """
+    valid_tasks = get_all_valid_full_slots_tasks()
+    task = random.choice(valid_tasks)
+    valid_tasks.remove(task)
+
+    task = extract_from_full(task)
+
+    info = task['goal']['restaurant']['inform']
+    request_slots = task['goal']['restaurant']['request']
+
+    # modify one of the slots, so that there isn't corresponding entry in database
+    for no_match_slot in random.sample(['food_type', 'price_range', 'area'], 3):
+        if no_match_slot in info:
+            valid_value = info[no_match_slot]
+            if not exist_match_task(info, no_match_slot, valid_value, valid_tasks):
+                msg = _get_msg(info, info.keys(), request_slots)
+                task['goal']['message'] = msg + f'，如果没有找到符合的餐厅，尝试把{g.slot_chinese[no_match_slot]}的值换成<b>{valid_value}</b>，再次询问'
+                return task
+            # recover original value
+            info[no_match_slot] = valid_value
+
+    # if there isn't any invalid task, return the valid task
+    return task
+
+
+def exist_match_task(task_informs, no_match_slot, valid_value, valid_tasks):
+    """
+    This function will modify 'task_informs'
+    :param task_informs:
+    :param no_match_slot:
+    :return:
+    """
+    random.shuffle(g.informs[no_match_slot])
+    for v in g.informs[no_match_slot]:
+        if v == valid_value:
+            continue
+        task_informs[no_match_slot] = v
+        for t in valid_tasks:
+            current_app.logger.debug(task_informs)
+            current_app.logger.debug(t['goal']['restaurant']['inform'])
+            valid_inform = t['goal']['restaurant']['inform']
+            is_match = True
+            for slot, value in task_informs.items():
+                if value != valid_inform[slot]:
+                    is_match = False
+                    break
+            if is_match:
+                return True
+    return False
+
+
+def _get_msg(all_informs, inform_slots, request_slots):
+    msg = '你正在寻找一家餐厅'
+    for i in inform_slots:
+        msg += ('，' + g.msg_inform_funcs[i](all_informs[i]))
+    msg += ('，' + ensure_requests(request_slots))
+    return msg
+
+
+def _get_task(informs, request_slots, msg):
+    """
+    :param informs: informs slot values
+    :type informs: dict
+    :param request_slots: request slots
+    :type request_slots: list
+    :param msg:
+    :return:
+    """
+    return {
+        'goal': {
+            'message': msg,
+            'restaurant': {
+                'inform': informs,
+                'request': request_slots
+            }
+        },
+        'log': []
+    }
+
+
+def get_all_valid_full_slots_tasks():
+    """
+    A valid task means there is corresponding data entries in database.
+    """
+    tasks = get_all_tasks()
+    valid_tasks = []
+    for t in tasks:
+        inform = dict()
+        if t['name']:
+            inform['name'] = t['name']
+        if t['tag']:
+            inform['food_type'] = t['tag']
+        if t['price_range']:
+            inform['price_range'] = t['price_range']
+        if t['area']:
+            inform['area'] = t['area']
+
+        request = []
+        if t['address']:
+            request.append('地址')
+        if t['phone']:
+            request.append('电话')
+        if t['recommends']:
+            request.append('推荐菜')
+
+        valid_tasks.append({
+            'goal': {
+                'message': '',
+                'restaurant': {
+                    'request': request,
+                    'inform': inform
+                }
+            },
+        })
+
+    return valid_tasks
+
+
 def reset_task_selected():
     current_time = datetime.datetime.utcnow()
     one_hour_ago = current_time - datetime.timedelta(minutes=30)
@@ -53,53 +235,47 @@ def reset_task_selected():
         task.selected = False
 
 
-def get_task():
-    tasks = get_tasks()
-    food_types = list(set([t['tag'] for t in tasks]))
-    price_ranges = list(set([t['price_range'] for t in tasks]))
-    rates = ['高', None]
-
-    food_type = random.choice(food_types)
-    price_range = random.choice(price_ranges)
-    rate = random.choice(rates)
-
-    requests = ['地址', '电话', '推荐菜']
-    requests = random.sample(requests, 2)
-
-    return json.dumps({
-        'goal': {
-            'message': want_food(food_type) + '，' +
-                       want_price_range(price_range) + '，' +
-                       want_rate(rate) + '，' +
-                       ensure_requests(requests),
-            'restaurant': {
-                'inform': {
-                    'food': food_type,
-                    'price_range': price_range
-                },
-                'request': requests
-            },
-        },
-        'log': []
-    }, ensure_ascii=False)
+def want_name(name):
+    return f'餐厅的名字是<b>{name}</b>'
 
 
-def want_food(ftype):
-    return '假设你正在寻找一家提供<b>{}</b>的餐厅'.format(ftype)
+def want_food_type(ftype):
+    return f'餐厅提供的食物类型为<b>{ftype}</b>'
 
 
 def want_price_range(price_range):
-    return '餐厅的价格为<b>{}</b>'.format(price_range)
+    return f'餐厅的价格为<b>{price_range}</b>'
 
 
-def want_rate(rate):
-    if rate:
-        return '你希望这家餐厅有<b>{}</b>用户评分'.format(rate)
-    else:
-        return '你不关心用户评分'
+def want_area(area):
+    return f'餐厅的所在地区在<b>{area}</b>附近'
 
 
 def ensure_requests(req):
-    return '确保你得到餐厅的<b>{}</b>，若未找到符合条件的餐厅可以回复<b>结束语</b>离开对话'.format('、'.join(req))
+    return '确保你得到餐厅的<b>{}</b>'.format('、'.join(req))
+
+
+@bp.route('/get-area')
+def get_all_areas():
+    v_tasks = get_all_valid_full_slots_tasks()
+    areas = set()
+    for t in v_tasks:
+        rest = t['goal']['restaurant']
+        area = rest['inform']['area']
+        areas.add(area)
+    current_app.logger.debug(areas)
+    return 'ok'
+
+
+@bp.route('/get-food-type')
+def get_all_food_types():
+    v_tasks = get_all_valid_full_slots_tasks()
+    food_types = set()
+    for t in v_tasks:
+        rest = t['goal']['restaurant']
+        food_type = rest['inform']['food_type']
+        food_types.add(food_type)
+    current_app.logger.debug(food_types)
+    return 'ok'
 
 

@@ -4,7 +4,7 @@ from flask import (Blueprint, render_template, request, session, jsonify,
                    redirect, url_for, current_app, flash)
 
 from .database import Task, db
-from .utils import get_tasks, get_priority
+from .utils import get_all_tasks, get_priority
 
 bp = Blueprint('wizard', __name__,
                static_folder='static',
@@ -98,7 +98,7 @@ def update_metadata():
 
 
 def get_task_attr():
-    tasks = get_tasks()
+    tasks = get_all_tasks()
     food_types = list(set([t['tag'] for t in tasks]))
     price_ranges = list(set([t['price_range'] for t in tasks]))
     rates = ['高', '不关心']
