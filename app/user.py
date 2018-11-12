@@ -19,7 +19,7 @@ def index():
             task = Task.query.filter_by(id=task_id).one()
             current_app.logger.info('task id: {}'.format(task_id))
         else:
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.select_task'))
 
         body = json.loads(task.body)
         desc = body['goal']['message']

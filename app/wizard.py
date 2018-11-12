@@ -4,7 +4,7 @@ from flask import (Blueprint, render_template, request, session, jsonify,
                    redirect, url_for, current_app, flash)
 
 from .database import Task, db
-from .utils import get_all_tasks, get_priority
+from .utils import get_priority, get_all_areas, get_all_food_types, get_all_price_ranges
 
 bp = Blueprint('wizard', __name__,
                static_folder='static',
@@ -19,20 +19,27 @@ def index():
             task_id = session['task_id']
             task = Task.query.filter_by(id=task_id).one()
         else:
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.select_task'))
 
         current_app.logger.info('task id: {}'.format(task_id))
         body = json.loads(task.body)
+        desc = body['goal']['message']
         log = body['log']
         db.session.commit()
 
-        food_types, price_ranges, rates = get_task_attr()
+        food_types, price_ranges, areas = get_task_attr()
+        if len(body['log']) > 1:
+            metadata = body['log'][-2]['metadata']
+        else:
+            metadata = {'inform': {}, 'request': []}
 
         return render_template('wizard.html',
+                               desc=desc,
                                log=log,
                                food_types=food_types,
                                price_ranges=price_ranges,
-                               rates=rates)
+                               areas=areas,
+                               metadata=metadata)
 
     elif request.method == 'POST':
         resp = request.form['sys_resp']
@@ -43,7 +50,11 @@ def index():
             body = json.loads(task.body)
             # save the wizard response and metadata
             body['log'][-1]['text'].append(request.form['sys_resp'])
-            body['log'][-1]['metadata'] = session['metadata']
+            if session.get('metadata'):
+                body['log'][-1]['metadata'] = session['metadata']
+            else:
+                flash('请先确认当前表单，点击finish')
+                return redirect(url_for('wizard.index'))
             task.body = json.dumps(body, ensure_ascii=False)
             task.priority = get_priority(body)
             task.selected = False
@@ -62,9 +73,10 @@ def update_metadata():
     This method will not save the metadata, and metadata will be saved until
     worker submit the whole form.
     """
+    name = request.form['want_name']
     food_type = request.form['want_food_type']
     price_range = request.form['want_price_range']
-    rate = request.form['want_rate']
+    area = request.form['want_area']
     request_food_type = True if request.form['request_food_type'] == 'yes' else False
     request_price_range = True if request.form['request_price_range'] == 'yes' else False
     request_recom = True if request.form['request_recom'] == 'yes' else False
@@ -74,12 +86,14 @@ def update_metadata():
     metadata = {'inform': {}, 'request': []}
 
     # inform
+    if name.strip():
+        metadata['inform']['name'] = name
     if food_type.strip():
         metadata['inform']['food_type'] = food_type
     if price_range.strip():
         metadata['inform']['price_range'] = price_range
-    if rate.strip():
-        metadata['inform']['rate'] = rate
+    if area.strip():
+        metadata['inform']['area'] = area
 
     # request
     if request_food_type:
@@ -87,7 +101,7 @@ def update_metadata():
     if request_price_range:
         metadata['request'].append('price_range')
     if request_recom:
-        metadata['request'].append('recommendation')
+        metadata['request'].append('recommends')
     if request_phone:
         metadata['request'].append('phone')
     if request_addr:
@@ -98,8 +112,4 @@ def update_metadata():
 
 
 def get_task_attr():
-    tasks = get_all_tasks()
-    food_types = list(set([t['tag'] for t in tasks]))
-    price_ranges = list(set([t['price_range'] for t in tasks]))
-    rates = ['高', '不关心']
-    return food_types, price_ranges, rates
+    return list(get_all_food_types()), list(get_all_price_ranges()), list(get_all_areas())

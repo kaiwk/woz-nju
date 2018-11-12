@@ -2,11 +2,11 @@ import json
 import random
 import datetime
 
-from flask import Blueprint, session, redirect, url_for, current_app, g, jsonify
+from flask import Blueprint, session, redirect, url_for, current_app, g, render_template
 from sqlalchemy import not_
 
 from .database import Task, db
-from .utils import get_all_tasks
+from .utils import get_all_valid_full_slots_tasks
 
 bp = Blueprint('main', __name__,
                static_folder='static',
@@ -39,8 +39,8 @@ def init_global():
     }
 
 
-@bp.route('/')
-def index():
+@bp.route('/select_task')
+def select_task():
 
     reset_task_selected()
 
@@ -69,15 +69,27 @@ def index():
     return redirect(url_for('wizard.index'))
 
 
-@bp.route('/get-task')
 def get_task():
+    """
+    Get task with json format
+    :return: task json string
+    :rtype: str
+    """
     valid_chance = 0.35
     if random.uniform(0, 1) > valid_chance:
-        return jsonify(get_valid_task())
-    return jsonify(get_invalid_task())
+        task = get_valid_task()
+    else:
+        task = get_invalid_task()
+    return json.dumps(task, ensure_ascii=False)
 
 
 def extract_from_full(task):
+    """
+    Extract task from task object with full slot-values
+    :param task: task with full slot-values
+    :return: task
+    :rtype: task
+    """
     rest = task['goal']['restaurant']
     all_requests = rest['request']
     all_informs = rest['inform']
@@ -98,6 +110,10 @@ def extract_from_full(task):
 
 
 def get_valid_task():
+    """
+    :return: task
+    :rtype: dict
+    """
     valid_tasks = get_all_valid_full_slots_tasks()
     task = random.choice(valid_tasks)
     return extract_from_full(task)
@@ -106,7 +122,8 @@ def get_valid_task():
 def get_invalid_task():
     """
     An invalid task means there is NOT corresponding data entries in database.
-    :return:
+    :return: task
+    :rtype: dict
     """
     valid_tasks = get_all_valid_full_slots_tasks()
     task = random.choice(valid_tasks)
@@ -123,7 +140,8 @@ def get_invalid_task():
             valid_value = info[no_match_slot]
             if not exist_match_task(info, no_match_slot, valid_value, valid_tasks):
                 msg = _get_msg(info, info.keys(), request_slots)
-                task['goal']['message'] = msg + f'，如果没有找到符合的餐厅，尝试把{g.slot_chinese[no_match_slot]}的值换成<b>{valid_value}</b>，再次询问'
+                task['goal']['message'] = msg + f'，如果没有找到符合的餐厅，尝试把{g.slot_chinese[no_match_slot]}' \
+                                                f'的值换成<b>{valid_value}</b>，用户会再次询问'
                 return task
             # recover original value
             info[no_match_slot] = valid_value
@@ -159,7 +177,7 @@ def exist_match_task(task_informs, no_match_slot, valid_value, valid_tasks):
 
 
 def _get_msg(all_informs, inform_slots, request_slots):
-    msg = '你正在寻找一家餐厅'
+    msg = '场景：用户正在寻找一家餐厅'
     for i in inform_slots:
         msg += ('，' + g.msg_inform_funcs[i](all_informs[i]))
     msg += ('，' + ensure_requests(request_slots))
@@ -185,44 +203,6 @@ def _get_task(informs, request_slots, msg):
         },
         'log': []
     }
-
-
-def get_all_valid_full_slots_tasks():
-    """
-    A valid task means there is corresponding data entries in database.
-    """
-    tasks = get_all_tasks()
-    valid_tasks = []
-    for t in tasks:
-        inform = dict()
-        if t['name']:
-            inform['name'] = t['name']
-        if t['tag']:
-            inform['food_type'] = t['tag']
-        if t['price_range']:
-            inform['price_range'] = t['price_range']
-        if t['area']:
-            inform['area'] = t['area']
-
-        request = []
-        if t['address']:
-            request.append('地址')
-        if t['phone']:
-            request.append('电话')
-        if t['recommends']:
-            request.append('推荐菜')
-
-        valid_tasks.append({
-            'goal': {
-                'message': '',
-                'restaurant': {
-                    'request': request,
-                    'inform': inform
-                }
-            },
-        })
-
-    return valid_tasks
 
 
 def reset_task_selected():
@@ -252,30 +232,9 @@ def want_area(area):
 
 
 def ensure_requests(req):
-    return '确保你得到餐厅的<b>{}</b>'.format('、'.join(req))
+    return '确保用户得到餐厅的<b>{}</b>'.format('、'.join(req))
 
 
-@bp.route('/get-area')
-def get_all_areas():
-    v_tasks = get_all_valid_full_slots_tasks()
-    areas = set()
-    for t in v_tasks:
-        rest = t['goal']['restaurant']
-        area = rest['inform']['area']
-        areas.add(area)
-    current_app.logger.debug(areas)
-    return 'ok'
-
-
-@bp.route('/get-food-type')
-def get_all_food_types():
-    v_tasks = get_all_valid_full_slots_tasks()
-    food_types = set()
-    for t in v_tasks:
-        rest = t['goal']['restaurant']
-        food_type = rest['inform']['food_type']
-        food_types.add(food_type)
-    current_app.logger.debug(food_types)
-    return 'ok'
-
-
+@bp.route('/')
+def index():
+    return render_template('main.html')

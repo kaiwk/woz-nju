@@ -67,10 +67,11 @@ def create_app(test_config=None):
     database.init_app(flask)
 
     # apply the blueprints to the app
-    from app import main, user, wizard, webhook
+    from app import main, user, wizard, webhook, online_help
     flask.register_blueprint(main.bp, url_prefix='/dc')
     flask.register_blueprint(user.bp, url_prefix='/dc')
     flask.register_blueprint(wizard.bp, url_prefix='/dc')
     flask.register_blueprint(webhook.bp, url_prefix='/dc')
+    flask.register_blueprint(online_help.bp, url_prefix='/dc')
 
     return flask

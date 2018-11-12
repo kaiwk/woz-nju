@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Data Collect - User</title>
+    <title>Data Collect - Wizard</title>
 
     <style>
      .green-box {
@@ -11,6 +11,10 @@
      .blue-box {
        border: 1px solid blue;
        padding: 10px;
+     }
+
+     b {
+       color: blue;
      }
 
      table {
@@ -42,9 +46,7 @@
                         '<td>' + rest.price_range + '</td>' +
                         '<td>' + rest.phone + '</td>' +
                         '<td>' + rest.address + '</td>' +
-                        '<td>' + rest.service + '</td>' +
-                        '<td>' + rest.environment + '</td>' +
-                        '<td>' + rest.taste + '</td>' +
+                        '<td>' + rest.area + '</td>' +
                         '<td>' + rest.recommends + '</td>' +
                         '</tr>';
              }
@@ -56,18 +58,21 @@
                  success: function(data) {
                      cons = data['inform'];/* cons means constraint */
                      $.getJSON('../static/kb/restaurant.json', function (restArr) {
-                         res = restArr.filter(function (rest) {
+                         res = restArr.filter(function (res) {
+                             if (cons['name']) {
+                                 return res.name === cons.name;
+                             } else return true;
+                         }).filter(function (rest) {
                              if (cons['food_type']) {
-                                 return rest.tag === cons.food_type
+                                 return rest.tag === cons.food_type;
                              } else return true;
                          }).filter(function (rest) {
                              if (cons['price_range']) {
-                                 return rest['price_range'] === cons['price_range'];
+                                 return rest['price_range'] === cons.price_range;
                              } else return true;
                          }).filter(function (rest) {
-                             if (cons['rate']) {
-                                 if (cons['rate'] === '不关心') return true
-                                 else return rest['rate'] === cons['rate'];
+                             if (cons['area']) {
+                                 return rest['area'] === cons.area;
                              } else return true;
                          });
                          console.log(res)
@@ -86,19 +91,22 @@
   </head>
 
   <body>
+    <div class="green-box">
+      {{ desc|safe }} <br><br>
+    </div>
     <div class="blue-box">
 
       {% for t in log %}
         {% if t['text'][0] %}
-          <p><span style="display:inline-block;width:55px;">消费者</span>| {{ t['text'][0] }}</p>
+          <p><span style="display:inline-block;width:55px;">用户</span>| {{ t['text'][0] }}</p>
         {% endif %}
         {% if t['text'][1] %}
-          <p><span style="display:inline-block;width:55px;">助手</span>| {{ t['text'][1] }}</p>
+          <p><span style="display:inline-block;width:55px;">机器人</span>| {{ t['text'][1] }}</p>
         {% endif %}
       {% endfor %}
 
       {% if log|length == 0 or 'metadata' in log[-1] %}
-        <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
+        <button type="button" onclick="window.location.href='{{ url_for('main.select_task') }}';">下一轮</button>
         <p>或关闭网页离开</p>
       {% else %}
         <div class="green-box">
@@ -106,18 +114,30 @@
           <p>
             请根据上面的对话修改以下信息，要求：<br><br>
             1. 结合最近的一次用户回复，理解并选择用户的需求 <br>
-            2. 根据情境提交合适的回复 <br>
-            3. 点击 finish，会提供对应的信息，你可以用这些信息回复给用户，如果你觉得用户已经结束了对话，请在提交之前勾选结束框 <br>
+            2. 根据<b>对话内容</b>提交合适的回复 <br>
+            3. 点击 finish，会提供对应的信息，你可以用这些信息回复给用户，<b>如果你觉得用户已经结束了对话，请在提交之前勾选结束框</b> <br>
           </p>
           <p>请在30分钟之内完成任务并关闭网页，并且不要同时打开多个页面填写内容</p>
           <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
             <ul>
               <li>
+                {% set informs = metadata['inform'] %}
+                {% set requests = metadata['request'] %}
+                <span>用户想要的餐厅名称？</span>
+                {% if 'name' in informs %}
+                  <input type="text" name="want_name" value="{{ informs['name'] }}" size="50"><br>
+                  {% else %}
+                  <input type="text" name="want_name" size="50"><br>
+                {% endif %}
                 <span>用户想要哪种食物类型？</span>
                 <select name="want_food_type">
                   <option value="">空</option>
                   {% for ft in food_types %}
-                    <option value="{{ ft }}">{{ ft }}</option>
+                    {% if 'food_type' in informs and ft == informs['food_type'] %}
+                      <option value="{{ ft }}" selected="selected">{{ ft }}</option>
+                    {% else %}
+                      <option value="{{ ft }}">{{ ft }}</option>
+                    {% endif %}
                   {% endfor %}
                 </select><br/>
 
@@ -125,15 +145,23 @@
                 <select name="want_price_range">
                   <option value="">空</option>
                   {% for pr in price_ranges %}
-                    <option value="{{ pr }}">{{ pr }}</option>
+                    {% if 'price_range' in informs and pr == informs['price_range'] %}
+                      <option value="{{ pr }}" selected="selected">{{ pr }}</option>
+                    {% else %}
+                      <option value="{{ pr }}">{{ pr }}</option>
+                    {% endif %}
                   {% endfor %}
                 </select><br/>
 
-                <span>用户对餐厅服务的要求是？</span>
-                <select name="want_rate">
+                <span>用户对地区的要求是？</span>
+                <select name="want_area">
                   <option value="">空</option>
-                  {% for r in rates %}
-                    <option value="{{ r }}">{{ r }}</option>
+                  {% for a in areas %}
+                    {% if 'area' in informs and a == informs['area'] %}
+                      <option value="{{ a }}" selected="selected">{{ a }}</option>
+                    {% else %}
+                      <option value="{{ a }}">{{ a }}</option>
+                    {% endif %}
                   {% endfor %}
                 </select><br/>
               </li>
@@ -142,41 +170,62 @@
                 <span>用户想知道餐厅的食物类型吗？</span>
                 <select name="request_food_type">
                   <option value="no">No</option>
-                  <option value="yes">Yes</option>
+                  {% if 'food_type' in requests %}
+                    <option value="yes" selected="selected">Yes</option>
+                  {% else %}
+                    <option value="yes">Yes</option>
+                  {% endif %}
                 </select>
                 <br/>
 
                 <span>用户想知道餐厅的价格范围吗？</span>
                 <select name="request_price_range">
                   <option value="no">No</option>
-                  <option value="yes">Yes</option>
+                  {% if 'price_range' in requests %}
+                    <option value="yes" selected="selected">Yes</option>
+                  {% else %}
+                    <option value="yes">Yes</option>
+                  {% endif %}
                 </select>
                 <br/>
 
                 <span>用户想知道餐厅的电话号码吗？</span>
                 <select name="request_phone">
                   <option value="no">No</option>
-                  <option value="yes">Yes</option>
+                  {% if 'phone' in requests %}
+                    <option value="yes" selected="selected">Yes</option>
+                  {% else %}
+                    <option value="yes">Yes</option>
+                  {% endif %}
                 </select>
                 <br/>
 
                 <span>用户想知道餐厅的地址吗吗？</span>
                 <select name="request_addr">
                   <option value="no">No</option>
-                  <option value="yes">Yes</option>
+                  {% if 'address' in requests %}
+                    <option value="yes" selected="selected">Yes</option>
+                  {% else %}
+                    <option value="yes">Yes</option>
+                  {% endif %}
                 </select>
                 <br/>
 
                 <span>用户想知道餐厅的推荐菜吗？</span>
                 <select name="request_recom">
                   <option value="no">No</option>
-                  <option value="yes">Yes</option>
+                  {% if 'recommends' in requests %}
+                    <option value="yes" selected="selected">Yes</option>
+                  {% else %}
+                    <option value="yes">Yes</option>
+                  {% endif %}
                 </select>
                 <br/>
               </li>
             </ul>
             <br>
-            <input type="submit" value="finish">
+            <input type="submit" value="finish"><br>
+            <b>每次提交前，请务必点击finish更新当前修改</b>
           </form>
         </div>
         <br>
@@ -211,9 +260,7 @@
             <th>价格定位</th>
             <th>电话</th>
             <th>地址</th>
-            <th>服务评分</th>
-            <th>环境评分</th>
-            <th>口味评分</th>
+            <th>地区</th>
             <th>推荐菜</th>
           </tr>
         </thead>

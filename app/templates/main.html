@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Introduction</title>
+  <style>
+    b {
+      color: blue;
+    }
+    .center {
+      margin: auto;
+      width: 50%;
+      border: 3px solid green;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="center">
+  使用须知：
+  <ul>
+    <li>本网页用于搜集对话数据，用户要担任<b>用户</b>和<b>机器人</b>角色，进行模拟对话。</li>
+    <li>
+      点击开始，会随机分配任务，请根据场景填写表单，一个完整的例子：
+      <pre style="font-size: 16px">
+        场景：　用户正在寻找一家餐厅，餐厅的名字是<b>和善园</b>，餐厅的价格为<b>中等</b>，
+        　　　　餐厅的所在地区在<b>中山路</b>附近，确保用户得到餐厅的<b>地址、推荐菜</b>，
+        　　　　如果没有找到符合的餐厅，尝试把所在地区的值换成<b>青岛路</b>，用户会再次询问
+
+        机器人：欢迎使用对话系统
+        用户：　中山路附近的和善园餐厅
+        机器人：抱歉，未找到符合要求的餐厅，换一个试试？
+        用户：　那青岛路的和善园餐厅
+        机器人：为你找到青岛路的和善源餐厅
+        用户：　价格中等就好，我穷
+        机器人：青岛路和善园餐厅符合你的条件
+        用户：　好，请给我它的地址和推荐菜
+        机器人：位于青岛路10号3幢2单元105室，推荐菜有肉丁烧卖,咖喱土豆牛肉包,醇香豆浆
+        用户：　谢谢
+        机器人：不客气
+        
+      </pre>
+    </li>
+    <li>点击帮助，会进入帮助视频</li>
+  </ul>
+  <a href="{{ url_for('main.select_task') }}"><button>开始任务</button></a>
+  <a href="{{ url_for('online_help.video_help') }}"><button>更多帮助</button></a>
+</div>
+</body>
+</html>

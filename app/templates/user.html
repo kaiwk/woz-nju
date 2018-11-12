@@ -13,6 +13,10 @@
        padding: 10px;
      }
 
+     b {
+       color: blue;
+     }
+
     </style>
   </head>
 
@@ -27,13 +31,13 @@
     </div>
     <br/>
     <div class="blue-box">
-      <p><span style="display:inline-block;width:55px;">助手</span>| 欢迎使用餐厅推荐对话系统，你可以向我提问。</p>
+      <p><span style="display:inline-block;width:55px;">机器人</span>| 欢迎使用餐厅推荐对话系统，你可以向我提问。</p>
       {% for t in log %}
         {% if t['text'][0] %}
-          <p><span style="display:inline-block;width:55px;">消费者</span>| {{ t['text'][0] }}</p>
+          <p><span style="display:inline-block;width:55px;">用户</span>| {{ t['text'][0] }}</p>
         {% endif %}
         {% if t['text'][1] %}
-          <p><span style="display:inline-block;width:55px;">助手</span>| {{ t['text'][1] }}</p>
+          <p><span style="display:inline-block;width:55px;">机器人</span>| {{ t['text'][1] }}</p>
         {% endif %}
       {% endfor %}
     </div>
@@ -44,7 +48,7 @@
         <input type="submit" value="Submit">
       </form>
     {% else %}
-      <button type="button" onclick="window.location.href='{{ url_for('main.index') }}';">下一轮</button>
+      <button type="button" onclick="window.location.href='{{ url_for('main.select_task') }}';">下一轮</button>
       <p>或关闭网页离开</p>
     {% endif %}
 
