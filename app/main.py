@@ -102,6 +102,10 @@ def extract_from_full(task):
     else:
         request_slots = all_requests
     informs = {k: all_informs[k] for k in inform_slots}
+    # 如果有name，去掉其他属性
+    if 'name' in informs:
+        inform_slots = ['name']
+        informs = {'name': informs['name']}
 
     # get messages
     msg = _get_msg(all_informs, inform_slots, request_slots)
@@ -122,6 +126,7 @@ def get_valid_task():
 def get_invalid_task():
     """
     An invalid task means there is NOT corresponding data entries in database.
+    To get an invalid task, we get a valid task, then convert it to be invalid
     :return: task
     :rtype: dict
     """
