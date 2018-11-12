@@ -3,3 +3,4 @@
 /.idea
 .mysql-env
 *.pyc
+/app/static/help.mp4
