@@ -28,6 +28,7 @@ def index():
         db.session.commit()
 
         food_types, price_ranges, areas = get_task_attr()
+        evaluate = task.evaluate
         if len(body['log']) > 1:
             metadata = body['log'][-2]['metadata']
         else:
@@ -39,7 +40,8 @@ def index():
                                food_types=food_types,
                                price_ranges=price_ranges,
                                areas=areas,
-                               metadata=metadata)
+                               metadata=metadata,
+                               evaluate=evaluate)
 
     elif request.method == 'POST':
         resp = request.form['sys_resp']
@@ -55,13 +57,16 @@ def index():
             else:
                 flash('请先确认当前表单，点击finish')
                 return redirect(url_for('wizard.index'))
+            desc = body['goal']['message']
             task.body = json.dumps(body, ensure_ascii=False)
             task.priority = get_priority(body)
             task.selected = False
             task.finished = is_over
             db.session.commit()
             session.clear()
-            return render_template('wizard.html', log=body['log'])
+            return render_template('wizard.html',
+                                   desc=desc,
+                                   log=body['log'])
         else:
             flash('回复内容不能为空哦')
             return redirect(url_for('wizard.index'))
@@ -82,6 +87,8 @@ def update_metadata():
     request_recom = True if request.form['request_recom'] == 'yes' else False
     request_phone = True if request.form['request_phone'] == 'yes' else False
     request_addr = True if request.form['request_addr'] == 'yes' else False
+
+    evaluate = request.form['evaluate']
 
     metadata = {'inform': {}, 'request': []}
 
@@ -108,6 +115,19 @@ def update_metadata():
         metadata['request'].append('address')
 
     session['metadata'] = metadata
+
+    # update evaluate
+    task_id = session['task_id']
+    task = Task.query.filter_by(id=task_id).one()
+    evaluate = evaluate.strip()
+    if evaluate:
+        try:
+            current_app.logger.debug('change %s evaluate from %s to %s', task, task.evaluate, evaluate)
+            task.evaluate = int(evaluate)
+        except ValueError:
+            pass
+    db.session.commit()
+
     return jsonify(metadata)
 
 
