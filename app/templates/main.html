@@ -14,27 +14,6 @@
       padding: 10px;
     }
   </style>
-{#  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>#}
-{#  <script type="text/javascript" src="{{ url_for('static', filename='js/fingerprint2.min.js') }}"></script>#}
-{#  <script>#}
-{#      if (window.requestIdleCallback) {#}
-{#          requestIdleCallback(function () {#}
-{#              Fingerprint2.get({}, function (components) {#}
-{#                  var values = components.map(function (component) { return component.value });#}
-{#                  var fingerprint = Fingerprint2.x64hash128(values.join(''), 31);#}
-{#                  $.post("{{ url_for('main.save_fingerprint') }}", {'fingerprint': fingerprint});#}
-{#              })#}
-{#          })#}
-{#      } else {#}
-{#          setTimeout(function () {#}
-{#              Fingerprint2.get({}, function (components) {#}
-{#                  var values = components.map(function (component) { return component.value });#}
-{#                  var fingerprint = Fingerprint2.x64hash128(values.join(''), 31);#}
-{#                  $.post("{{ url_for('main.save_fingerprint') }}", {'fingerprint': fingerprint});#}
-{#              })#}
-{#          }, 500)#}
-{#      }#}
-{#  </script>#}
 </head>
 <body>
 
@@ -68,7 +47,9 @@
     </li>
     <li>点击帮助，会进入帮助视频</li>
   </ul>
-  <a href="{{ url_for('main.select_task') }}"><button>开始任务</button></a>
+  <a href="{{ url_for('main.select_task') }}"><button>开始随机任务</button></a>
+  <a href="{{ url_for('main.select_task', task_type='valid') }}"><button>开始任务1</button></a>
+  <a href="{{ url_for('main.select_task', task_type='invalid') }}"><button>开始任务2</button></a> <br><br>
   <a href="{{ url_for('online_help.video_help') }}"><button>更多帮助</button></a>
 </div>
 </body>

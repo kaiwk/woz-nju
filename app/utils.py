@@ -1,5 +1,21 @@
 import json
+
+from enum import Enum
+
 from flask import current_app, session
+
+
+class TaskType(Enum):
+    VALID = 0
+    INVALID = 1
+
+    @staticmethod
+    def from_str(task_type):
+        if task_type == 'valid':
+            return TaskType.VALID
+        elif task_type == 'invalid':
+            return TaskType.INVALID
+        return None
 
 
 def add_turn_count():

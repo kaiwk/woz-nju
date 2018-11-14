@@ -81,6 +81,7 @@
                              $('#search-result').append(table_row(rest));
                          });
                      });
+                     $('#wizard-submit :input').prop('disabled', false);
                  }
              });
              e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -112,7 +113,7 @@
         <div class="green-box">
 
           <p>
-            请根据上面的对话修改以下信息，要求：<br><br>
+            <b>假设你现在是机器人，你不知道场景</b>，请根据上面的对话修改以下信息，要求：<br><br>
             1. 结合最近的一次用户回复，理解并选择用户的需求 <br>
             2. 根据<b>对话内容</b>提交合适的回复 <br>
             3. 点击 finish，会提供对应的信息，你可以用这些信息回复给用户，<b>如果你觉得用户已经结束了对话，请在提交之前勾选结束框</b> <br>
@@ -231,10 +232,10 @@
           </form>
         </div>
         <br>
-        <form action="{{ url_for('wizard.index') }}" method="post">
-          <input type="text" name="sys_resp" size="200"> <br>
-          <input type="checkbox" name="is_over">对话已结束 <br><br>
-          <input type="submit" value="Submit">
+        <form id="wizard-submit" action="{{ url_for('wizard.index') }}" method="post">
+          <input type="text" name="sys_resp" size="200" disabled> <br>
+          <input type="checkbox" name="is_over" disabled>对话已结束 <br><br>
+          <input type="submit" value="Submit" disabled>
         </form>
       {% endif %}
 

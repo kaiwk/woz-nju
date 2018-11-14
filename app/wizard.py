@@ -66,9 +66,7 @@ def index():
             session.pop('task_id')
             session.pop('metadata')
             add_turn_count()
-            return render_template('wizard.html',
-                                   desc=desc,
-                                   log=body['log'])
+            return redirect(url_for('main.index'))
         else:
             flash('回复内容不能为空哦')
             return redirect(url_for('wizard.index'))

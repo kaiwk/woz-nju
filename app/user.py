@@ -42,7 +42,7 @@ def index():
             db.session.commit()
             session.pop('task_id')
             add_turn_count()
-            return render_template('user.html', desc=desc, log=log)
+            return redirect(url_for('main.index'))
         else:
             flash('回复内容不能为空哦')
             return redirect(url_for('user.index'))

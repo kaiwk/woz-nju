@@ -6,7 +6,7 @@ from flask import Blueprint, session, redirect, url_for, current_app, g, render_
 from sqlalchemy import not_
 
 from .database import Task, db
-from .utils import get_all_valid_full_slots_tasks
+from .utils import get_all_valid_full_slots_tasks, TaskType
 
 bp = Blueprint('main', __name__,
                static_folder='static',
@@ -39,18 +39,25 @@ def init_global():
     }
 
 
-@bp.route('/select_task')
-def select_task():
+@bp.route('/select_task', defaults={'task_type': None})
+@bp.route('/select_task/<task_type>')
+def select_task(task_type):
 
     reset_task_selected()
 
-    task = db.session.query(Task).with_for_update()\
+    tasks = db.session.query(Task).with_for_update()\
         .filter(not_(Task.selected) & not_(Task.finished))\
-        .order_by(Task.priority.desc())\
-        .first()
+        .order_by(Task.priority.desc())
+
+    task_type = TaskType.from_str(task_type)
+    if task_type:
+        task = tasks.filter(Task.task_type == task_type).first()
+    else:
+        task = tasks.first()
 
     if task is None:
-        task = Task(body=get_task())
+        task_body, task_type = get_task(task_type)
+        task = Task(body=task_body, task_type=task_type)
         db.session.add(task)
 
     task.selected = True
@@ -69,18 +76,28 @@ def select_task():
     return redirect(url_for('wizard.index'))
 
 
-def get_task():
+def get_task(task_type=None):
     """
     Get task with json format
     :return: task json string
     :rtype: str
     """
-    valid_chance = 0.35
-    if random.uniform(0, 1) > valid_chance:
+    if task_type == TaskType.VALID:
+        current_app.logger.info('select VALID task!')
         task = get_valid_task()
-    else:
+    elif task_type == TaskType.INVALID:
+        current_app.logger.info('select INVALID task!')
         task = get_invalid_task()
-    return json.dumps(task, ensure_ascii=False)
+    else:
+        valid_chance = 0.35
+        if random.uniform(0, 1) > valid_chance:
+            task = get_valid_task()
+            task_type = TaskType.VALID
+        else:
+            task = get_invalid_task()
+            task_type = TaskType.INVALID
+
+    return json.dumps(task, ensure_ascii=False), task_type
 
 
 def extract_from_full(task):
@@ -131,28 +148,26 @@ def get_invalid_task():
     :rtype: dict
     """
     valid_tasks = get_all_valid_full_slots_tasks()
-    task = random.choice(valid_tasks)
-    valid_tasks.remove(task)
+    while True:
+        task = random.choice(valid_tasks)
+        valid_tasks.remove(task)
 
-    task = extract_from_full(task)
+        task = extract_from_full(task)
 
-    info = task['goal']['restaurant']['inform']
-    request_slots = task['goal']['restaurant']['request']
+        info = task['goal']['restaurant']['inform']
+        request_slots = task['goal']['restaurant']['request']
 
-    # modify one of the slots, so that there isn't corresponding entry in database
-    for no_match_slot in random.sample(['food_type', 'price_range', 'area'], 3):
-        if no_match_slot in info:
-            valid_value = info[no_match_slot]
-            if not exist_match_task(info, no_match_slot, valid_value, valid_tasks):
-                msg = _get_msg(info, info.keys(), request_slots)
-                task['goal']['message'] = msg + f'，如果没有找到符合的餐厅，尝试把{g.slot_chinese[no_match_slot]}' \
-                                                f'的值换成<b>{valid_value}</b>，用户会再次询问'
-                return task
-            # recover original value
-            info[no_match_slot] = valid_value
-
-    # if there isn't any invalid task, return the valid task
-    return task
+        # modify one of the slots, so that there isn't corresponding entry in database
+        for no_match_slot in random.sample(['food_type', 'price_range', 'area'], 3):
+            if no_match_slot in info:
+                valid_value = info[no_match_slot]
+                if not exist_match_task(info, no_match_slot, valid_value, valid_tasks):
+                    msg = _get_msg(info, info.keys(), request_slots)
+                    task['goal']['message'] = msg + f'，如果没有找到符合的餐厅，尝试把{g.slot_chinese[no_match_slot]}' \
+                                                    f'的值换成<b>{valid_value}</b>，用户会再次询问'
+                    return task
+                # recover original value
+                info[no_match_slot] = valid_value
 
 
 def exist_match_task(task_informs, no_match_slot, valid_value, valid_tasks):
