@@ -2,7 +2,7 @@ import json
 import random
 import datetime
 
-from flask import Blueprint, session, redirect, url_for, current_app, g, render_template
+from flask import Blueprint, session, redirect, url_for, current_app, g, render_template, jsonify, request
 from sqlalchemy import not_
 
 from .database import Task, db
@@ -242,4 +242,6 @@ def ensure_requests(req):
 
 @bp.route('/')
 def index():
+    if session.get('turn_count') is None:
+        session['turn_count'] = 0
     return render_template('main.html')

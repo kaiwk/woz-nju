@@ -4,7 +4,7 @@ from flask import (Blueprint, render_template, request, session, redirect,
                    url_for, current_app, flash)
 
 from .database import Task, db
-from .utils import get_priority
+from .utils import get_priority, add_turn_count
 
 bp = Blueprint('user', __name__,
                static_folder='static',
@@ -40,7 +40,8 @@ def index():
             task.priority = get_priority(body)
             task.selected = False
             db.session.commit()
-            session.clear()
+            session.pop('task_id')
+            add_turn_count()
             return render_template('user.html', desc=desc, log=log)
         else:
             flash('回复内容不能为空哦')

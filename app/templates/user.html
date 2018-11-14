@@ -48,8 +48,8 @@
         <input type="submit" value="Submit">
       </form>
     {% else %}
-      <button type="button" onclick="window.location.href='{{ url_for('main.select_task') }}';">下一轮</button>
-      <p>或关闭网页离开</p>
+      <a href="{{ url_for('main.select_task') }}"><button>下一轮</button></a>
+      <a href="{{ url_for('main.index') }}"><button>返回首页</button></a>
     {% endif %}
 
     <!-- get flashes -->

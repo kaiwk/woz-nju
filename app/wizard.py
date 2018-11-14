@@ -4,7 +4,7 @@ from flask import (Blueprint, render_template, request, session, jsonify,
                    redirect, url_for, current_app, flash)
 
 from .database import Task, db
-from .utils import get_priority, get_all_areas, get_all_food_types, get_all_price_ranges
+from .utils import get_priority, get_all_areas, get_all_food_types, get_all_price_ranges, add_turn_count
 
 bp = Blueprint('wizard', __name__,
                static_folder='static',
@@ -63,7 +63,9 @@ def index():
             task.selected = False
             task.finished = is_over
             db.session.commit()
-            session.clear()
+            session.pop('task_id')
+            session.pop('metadata')
+            add_turn_count()
             return render_template('wizard.html',
                                    desc=desc,
                                    log=body['log'])

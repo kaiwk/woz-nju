@@ -1,5 +1,12 @@
 import json
-from flask import current_app
+from flask import current_app, session
+
+
+def add_turn_count():
+    if session.get('turn_count'):
+        session['turn_count'] += 1
+    else:
+        session['turn_count'] = 1
 
 
 def get_all_tasks():
