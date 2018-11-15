@@ -28,7 +28,10 @@ def index():
         db.session.commit()
 
         food_types, price_ranges, areas = get_task_attr()
-        evaluate = task.evaluate
+        if task.evaluate > 5:
+            evaluate = 'high'
+        else:
+            evaluate = 'low'
         if len(body['log']) > 1:
             metadata = body['log'][-2]['metadata']
         else:
@@ -57,7 +60,6 @@ def index():
             else:
                 flash('请先确认当前表单，点击finish')
                 return redirect(url_for('wizard.index'))
-            desc = body['goal']['message']
             task.body = json.dumps(body, ensure_ascii=False)
             task.priority = get_priority(body)
             task.selected = False
@@ -82,11 +84,11 @@ def update_metadata():
     food_type = request.form['want_food_type']
     price_range = request.form['want_price_range']
     area = request.form['want_area']
-    request_food_type = True if request.form['request_food_type'] == 'yes' else False
-    request_price_range = True if request.form['request_price_range'] == 'yes' else False
-    request_recom = True if request.form['request_recom'] == 'yes' else False
-    request_phone = True if request.form['request_phone'] == 'yes' else False
-    request_addr = True if request.form['request_addr'] == 'yes' else False
+    request_food_type = request.form.get('request_food_type') is not None
+    request_price_range = request.form.get('request_price_range') is not None
+    request_recom = request.form.get('request_recom') is not None
+    request_phone = request.form.get('request_phone') is not None
+    request_addr = request.form.get('request_addr') is not None
 
     evaluate = request.form['evaluate']
 
@@ -94,7 +96,7 @@ def update_metadata():
 
     # inform
     if name.strip():
-        metadata['inform']['name'] = name
+        metadata['inform']['name'] = name.strip()
     if food_type.strip():
         metadata['inform']['food_type'] = food_type
     if price_range.strip():
@@ -116,16 +118,16 @@ def update_metadata():
 
     session['metadata'] = metadata
 
-    # update evaluate
+    # update
+    if evaluate == 'high':
+        evaluate = 10
+    else:
+        evaluate = 5
     task_id = session['task_id']
     task = Task.query.filter_by(id=task_id).one()
-    evaluate = evaluate.strip()
     if evaluate:
-        try:
-            current_app.logger.debug('change %s evaluate from %s to %s', task, task.evaluate, evaluate)
-            task.evaluate = int(evaluate)
-        except ValueError:
-            pass
+        current_app.logger.debug('change %s evaluate from %s to %s', task, task.evaluate, evaluate)
+        task.evaluate = evaluate
     db.session.commit()
 
     return jsonify(metadata)

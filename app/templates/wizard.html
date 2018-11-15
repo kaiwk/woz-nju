@@ -92,11 +92,8 @@
   </head>
 
   <body>
-    <div class="green-box">
-      {{ desc|safe }} <br><br>
-    </div>
     <div class="blue-box">
-
+      对话历史(<b>你现在是机器人</b>)
       {% for t in log %}
         {% if t['text'][0] %}
           <p><span style="display:inline-block;width:55px;">用户</span>| {{ t['text'][0] }}</p>
@@ -113,10 +110,7 @@
         <div class="green-box">
 
           <p>
-            <b>假设你现在是机器人，你不知道场景</b>，请根据上面的对话修改以下信息，要求：<br><br>
-            1. 结合最近的一次用户回复，理解并选择用户的需求 <br>
-            2. 根据<b>对话内容</b>提交合适的回复 <br>
-            3. 点击 finish，会提供对应的信息，你可以用这些信息回复给用户，<b>如果你觉得用户已经结束了对话，请在提交之前勾选结束框</b> <br>
+            <b>你现在是机器人</b>，请根据<b>对话历史</b>修改以下信息，没有的属性则<b>不填</b>。如果你认为用户已经结束了对话，请在提交之前勾选用户已经离开<br>
           </p>
           <p>请在30分钟之内完成任务并关闭网页，并且不要同时打开多个页面填写内容</p>
           <form id="annotation" action="{{ url_for('wizard.update_metadata') }}" method="post">
@@ -124,13 +118,13 @@
               <li>
                 {% set informs = metadata['inform'] %}
                 {% set requests = metadata['request'] %}
-                <span>用户想要的餐厅名称？</span>
+                <span style="display:inline-block;width:250px;">用户想要的<b>餐厅名字</b>？</span>
                 {% if 'name' in informs %}
-                  <input type="text" name="want_name" value="{{ informs['name'] }}" size="50"><br>
+                  <input type="text" name="want_name" value="{{ informs['name'] }}" size="40"><br>
                   {% else %}
-                  <input type="text" name="want_name" size="50"><br>
+                  <input type="text" name="want_name" size="40"><br>
                 {% endif %}
-                <span>用户想要哪种食物类型？</span>
+                <span style="display:inline-block;width:250px;">用户想要哪种<b>食物类型</b>？</span>
                 <select name="want_food_type">
                   <option value="">空</option>
                   {% for ft in food_types %}
@@ -142,7 +136,7 @@
                   {% endfor %}
                 </select><br/>
 
-                <span>用户想要的餐厅在哪种价格范围？</span>
+                <span style="display:inline-block;width:250px;">用户想要的餐厅在哪种<b>价格范围</b>？</span>
                 <select name="want_price_range">
                   <option value="">空</option>
                   {% for pr in price_ranges %}
@@ -154,7 +148,7 @@
                   {% endfor %}
                 </select><br/>
 
-                <span>用户对地区的要求是？</span>
+                <span style="display:inline-block;width:250px;">用户想要的餐厅在哪个<b>地区</b>？</span>
                 <select name="want_area">
                   <option value="">空</option>
                   {% for a in areas %}
@@ -168,73 +162,91 @@
               </li>
               <br><br>
               <li>
-                <span>用户想知道餐厅的食物类型吗？</span>
-                <select name="request_food_type">
-                  <option value="no">No</option>
-                  {% if 'food_type' in requests %}
-                    <option value="yes" selected="selected">Yes</option>
-                  {% else %}
-                    <option value="yes">Yes</option>
-                  {% endif %}
-                </select>
+                {% if 'food_type' in requests %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>食物类型</b>吗？</span>
+                  <input type="checkbox" name="request_food_type" checked>
+                {% else %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>食物类型</b>吗？</span>
+                  <input type="checkbox" name="request_food_type">
+                {% endif %}
                 <br/>
 
-                <span>用户想知道餐厅的价格范围吗？</span>
-                <select name="request_price_range">
-                  <option value="no">No</option>
-                  {% if 'price_range' in requests %}
-                    <option value="yes" selected="selected">Yes</option>
-                  {% else %}
-                    <option value="yes">Yes</option>
-                  {% endif %}
-                </select>
-                <br/>
+                {% if 'price_range' in requests %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>价格范围</b>吗？</span>
+                  <input type="checkbox" name="request_price_range" checked>
+                {% else %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>价格范围</b>吗？</span>
+                  <input type="checkbox" name="request_price_range">
+                {% endif %}
+                <br>
 
-                <span>用户想知道餐厅的电话号码吗？</span>
-                <select name="request_phone">
-                  <option value="no">No</option>
-                  {% if 'phone' in requests %}
-                    <option value="yes" selected="selected">Yes</option>
-                  {% else %}
-                    <option value="yes">Yes</option>
-                  {% endif %}
-                </select>
-                <br/>
+                {% if 'phone' in requests %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>电话</b>吗？</span>
+                  <input type="checkbox" name="request_phone" checked>
+                {% else %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>电话</b>吗？</span>
+                  <input type="checkbox" name="request_phone">
+                {% endif %}
+                <br>
 
-                <span>用户想知道餐厅的地址吗吗？</span>
-                <select name="request_addr">
-                  <option value="no">No</option>
-                  {% if 'address' in requests %}
-                    <option value="yes" selected="selected">Yes</option>
-                  {% else %}
-                    <option value="yes">Yes</option>
-                  {% endif %}
-                </select>
-                <br/>
+                {% if 'address' in requests %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>地址</b>吗？</span>
+                  <input type="checkbox" name="request_addr" checked>
+                {% else %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>地址</b>吗？</span>
+                  <input type="checkbox" name="request_addr">
+                {% endif %}
+                <br>
 
-                <span>用户想知道餐厅的推荐菜吗？</span>
-                <select name="request_recom">
-                  <option value="no">No</option>
-                  {% if 'recommends' in requests %}
-                    <option value="yes" selected="selected">Yes</option>
-                  {% else %}
-                    <option value="yes">Yes</option>
-                  {% endif %}
-                </select>
-                <br/>
+                {% if 'recommends' in requests %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>推荐菜</b>吗？</span>
+                  <input type="checkbox" name="request_recom" checked>
+                {% else %}
+                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>推荐菜</b>吗？</span>
+                  <input type="checkbox" name="request_recom">
+                {% endif %}
+                <br>
               </li>
             </ul>
             <br>
-            <label for="evaluate">对话内容评价(满分10分):</label>
-            <input id="evaluate" type="text" name="evaluate" value="{{ evaluate }}">
+            <label for="evaluate">对话内容质量评价:</label>
+            <select id="evaluate" name="evaluate">
+              {% if evaluate == 'high' %}
+                <option value="high" selected>高</option>
+                <option value="low">低</option>
+              {% else %}
+                <option value="high">高</option>
+                <option value="low" selected>低</option>
+              {% endif %}
+            </select> <br><br>
             <input type="submit" value="finish"><br><br>
             <b>每次提交前，请务必点击finish更新当前修改</b>
           </form>
         </div>
         <br>
+
+        <div class="green-box">
+          <table style="width:100%">
+            <thead>
+            <tr>
+              <th>餐厅名</th>
+              <th>食物类型</th>
+              <th>平均价格</th>
+              <th>价格定位</th>
+              <th>电话</th>
+              <th>地址</th>
+              <th>地区</th>
+              <th>推荐菜</th>
+            </tr>
+            </thead>
+            <tbody id="search-result">
+            </tbody>
+          </table>
+        </div> <br>
+
         <form id="wizard-submit" action="{{ url_for('wizard.index') }}" method="post">
-          <input type="text" name="sys_resp" size="200" disabled> <br>
-          <input type="checkbox" name="is_over" disabled>对话已结束 <br><br>
+          <input type="text" name="sys_resp" placeholder="请向用户给出合理回复" size="200" disabled> <br>
+          用户已离开?<input type="checkbox" name="is_over" disabled><br><br>
           <input type="submit" value="Submit" disabled>
         </form>
       {% endif %}
@@ -250,26 +262,6 @@
         {% endif %}
       {% endwith %}
 
-    </div>
-
-    <div class="green-box">
-
-      <table style="width:100%">
-        <thead>
-          <tr>
-            <th>餐厅名</th>
-            <th>食物类型</th>
-            <th>平均价格</th>
-            <th>价格定位</th>
-            <th>电话</th>
-            <th>地址</th>
-            <th>地区</th>
-            <th>推荐菜</th>
-          </tr>
-        </thead>
-        <tbody id="search-result">
-        </tbody>
-      </table>
     </div>
   </body>
 </html>

@@ -24,13 +24,14 @@
     <div class="green-box">
       {{ desc|safe }} <br><br>
       <p>
-        1. 如果没有符合规定的餐厅，可以更改条件；如果餐厅没有电话，可以改为索要餐厅地址 <br>
-        2. 如果已经尝试过更改条件，仍未找到，即可回复结束语，如：‘好，谢谢’，‘再会’，‘十分感谢’，‘算了，我突然不饿了’
+        1. 如果没有符合要求的餐厅，可以更改条件，继续询问 <br>
+        2. 找到符合要求的餐厅后，可回复结束语离开（‘好，谢谢’，‘再会’，‘十分感谢’）
       </p>
-      <p>请在30分钟之内完成任务并关闭网页，并且不要同时打开多个页面填写内容</p>
+      <p>请不要同时打开多个页面填写内容</p>
     </div>
     <br/>
     <div class="blue-box">
+      对话历史(<b>你现在是用户</b>)
       <p><span style="display:inline-block;width:55px;">机器人</span>| 欢迎使用餐厅推荐对话系统，你可以向我提问。</p>
       {% for t in log %}
         {% if t['text'][0] %}
@@ -44,7 +45,7 @@
     <br/>
     {% if log|length == 0 or 'metadata' in log[-1] %}
       <form id="user-submit" action="{{ url_for('user.index') }}" method="post">
-        <input type="text" name="resp" size="200">
+        <input type="text" name="resp" placeholder="请向机器人给出合理回复" size="200">
         <input type="submit" value="Submit">
       </form>
     {% else %}
