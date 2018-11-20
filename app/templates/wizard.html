@@ -162,50 +162,61 @@
               </li>
               <br><br>
               <li>
+                用户想要知道： <br><br>
+
+                <span style="display:inline-block;width:110px;">
+                食物类型
                 {% if 'food_type' in requests %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>食物类型</b>吗？</span>
                   <input type="checkbox" name="request_food_type" checked>
                 {% else %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>食物类型</b>吗？</span>
                   <input type="checkbox" name="request_food_type">
                 {% endif %}
-                <br/>
+                </span>
 
+                <span style="display:inline-block;width:110px;">
+                价格范围
                 {% if 'price_range' in requests %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>价格范围</b>吗？</span>
                   <input type="checkbox" name="request_price_range" checked>
                 {% else %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>价格范围</b>吗？</span>
                   <input type="checkbox" name="request_price_range">
                 {% endif %}
-                <br>
+                </span>
 
+                <span style="display:inline-block;width:110px;">
+                餐厅名字
+                  {% if 'name' in requests %}
+                    <input type="checkbox" name="request_name" checked>
+                  {% else %}
+                    <input type="checkbox" name="request_name">
+                  {% endif %}
+                </span>
+
+                <span style="display:inline-block;width:110px;">
+                餐厅电话
                 {% if 'phone' in requests %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>电话</b>吗？</span>
                   <input type="checkbox" name="request_phone" checked>
                 {% else %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>电话</b>吗？</span>
                   <input type="checkbox" name="request_phone">
                 {% endif %}
-                <br>
+                </span>
 
+                <span style="display:inline-block;width:110px;">
+                餐厅地址
                 {% if 'address' in requests %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>地址</b>吗？</span>
                   <input type="checkbox" name="request_addr" checked>
                 {% else %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>地址</b>吗？</span>
                   <input type="checkbox" name="request_addr">
                 {% endif %}
-                <br>
+                </span>
 
+                <span style="display:inline-block;width:110px;">
+                推荐菜
                 {% if 'recommends' in requests %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>推荐菜</b>吗？</span>
                   <input type="checkbox" name="request_recom" checked>
                 {% else %}
-                  <span style="display:inline-block;width:250px;">用户想知道餐厅的<b>推荐菜</b>吗？</span>
                   <input type="checkbox" name="request_recom">
                 {% endif %}
-                <br>
+                </span>
               </li>
             </ul>
             <br>

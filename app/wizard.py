@@ -89,6 +89,7 @@ def update_metadata():
     request_recom = request.form.get('request_recom') is not None
     request_phone = request.form.get('request_phone') is not None
     request_addr = request.form.get('request_addr') is not None
+    request_name = request.form.get('request_name') is not None
 
     evaluate = request.form['evaluate']
 
@@ -115,6 +116,8 @@ def update_metadata():
         metadata['request'].append('phone')
     if request_addr:
         metadata['request'].append('address')
+    if request_name:
+        metadata['request'].append('name')
 
     session['metadata'] = metadata
 
